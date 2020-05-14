@@ -40,5 +40,36 @@ module.exports = {
     } catch (error) {
         next(error);
     }
+  },
+
+  async destroy(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { user_id } = req.query;
+
+      await knex('topics')
+        .where({ id, user_id })
+        .del();
+      
+      return res.send();
+    } catch (error) {
+        next(error);
+    }
+  },
+
+  async update(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { name } = req.body;
+      const { user_id } = req.query;
+
+      await knex('topics')
+        .update({ name })
+        .where({ id, user_id });
+
+      return res.send();
+    } catch (error) {
+        next(error);
+    }
   }
 }

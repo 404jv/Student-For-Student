@@ -8,7 +8,9 @@ routes
   .put('/users/:id', UsersController.update)
   .delete('/users/:id', UsersController.destroy)
 
-  .get('/topics',  TopicsController.index)
-  .post('/topics',  TopicsController.store);
+  .get('/topics', TopicsController.index)
+  .post('/topics', TopicsController.store)
+  .delete('/topics/:id', TopicsController.destroy)
+  .put('/topics/:id', TopicsController.update);
 
 module.exports = routes;
