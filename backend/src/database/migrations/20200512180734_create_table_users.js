@@ -1,5 +1,6 @@
+const { onUpdateTrigger } = require('../../../knexfile');
 
-exports.up = knex => knex.schema.createTable('users', table => {
+exports.up = async knex => knex.schema.createTable('users', table => {
   table.string('id', 8).primary();
   table.string('name', 100).notNullable();
   table.string('email', 254).unique().notNullable();
@@ -7,6 +8,6 @@ exports.up = knex => knex.schema.createTable('users', table => {
 
   table.timestamp('created_at').defaultTo(knex.fn.now());
   table.timestamp('updated_at').defaultTo(knex.fn.now());
-});
+}).then(() => knex.raw(onUpdateTrigger('users')));
 
-exports.down = knex => knex.schema.dropTable('users');
+exports.down = async knex => knex.schema.dropTable('users');

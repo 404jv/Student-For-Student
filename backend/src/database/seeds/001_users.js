@@ -7,19 +7,19 @@ exports.seed = knex =>
       // Inserts seed entries
       knex('users').insert([
         { 
-          id: cypto.randomBytes(4).toString('HEX'),
+          id: 'e742b377',
           name: 'João Victor', 
           email: 'joao@gmail.com',
           password: '00123'
         },
         { 
-          id: cypto.randomBytes(4).toString('HEX'),
+          id: '3f80473a',
           name: 'Robson', 
           email: 'robson@gmail.com',
           password: '00123'
         },
         { 
-          id: cypto.randomBytes(4).toString('HEX'),
+          id: '37eadd35',
           name: 'Carls', 
           email: 'carls@gmail.com',
           password: '00123'

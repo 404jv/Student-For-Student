@@ -9,17 +9,17 @@ exports.seed = knex =>
         { 
           id: cypto.randomBytes(4).toString('HEX'),
           name: 'Projeto my',
-          user_id: '018f2b55'
+          user_id: 'e742b377'
         },
         { 
           id: cypto.randomBytes(4).toString('HEX'),
           name: 'Projeto my',
-          user_id: '018f2b55'
+          user_id: 'e742b377'
         },
         { 
           id: cypto.randomBytes(4).toString('HEX'),
           name: 'Projeto my',
-          user_id: '7d6f3f35'
+          user_id: '37eadd35'
         }
       ])
     );
