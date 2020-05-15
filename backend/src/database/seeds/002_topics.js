@@ -1,4 +1,3 @@
-const cypto = require('crypto');
 
 exports.seed = knex =>
   // Deletes ALL existing entries
@@ -7,17 +6,17 @@ exports.seed = knex =>
       // Inserts seed entries
       knex('topics').insert([
         { 
-          id: cypto.randomBytes(4).toString('HEX'),
+          id: '80c2168a',
           name: 'Projeto my',
           user_id: 'e742b377'
         },
         { 
-          id: cypto.randomBytes(4).toString('HEX'),
+          id: 'e1048a89',
           name: 'Projeto my',
           user_id: 'e742b377'
         },
         { 
-          id: cypto.randomBytes(4).toString('HEX'),
+          id: 'f4455e45',
           name: 'Projeto my',
           user_id: '37eadd35'
         }
