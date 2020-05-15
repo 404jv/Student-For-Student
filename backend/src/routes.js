@@ -1,6 +1,7 @@
 const routes = require('express').Router();
 const UsersController = require('./controller/UsersController');
 const TopicsController = require('./controller/TopicsController');
+const MatterController = require('./controller/MatterController');
 
 routes
   .get('/users', UsersController.index)
@@ -11,6 +12,9 @@ routes
   .get('/topics', TopicsController.index)
   .post('/topics', TopicsController.store)
   .delete('/topics/:id', TopicsController.destroy)
-  .put('/topics/:id', TopicsController.update);
+  .put('/topics/:id', TopicsController.update)
+  
+  .get('/matters', MatterController.index)
+  .post('/matters', MatterController.store);
 
 module.exports = routes;
