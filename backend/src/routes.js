@@ -15,6 +15,8 @@ routes
   .put('/topics/:id', TopicsController.update)
   
   .get('/matters', MatterController.index)
-  .post('/matters', MatterController.store);
+  .post('/matters', MatterController.store)
+  .delete('/matters/:id', MatterController.destroy)
+  .put('/matters/:id', MatterController.update);
 
 module.exports = routes;

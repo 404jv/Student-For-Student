@@ -24,6 +24,7 @@ module.exports = {
         next(error);
     }
   },
+
   async store(req, res, next) {
     try {
       const { title, resume, tags } = req.body;
@@ -40,6 +41,40 @@ module.exports = {
       return res.status(201).send();
     } catch (error) {
         next(error);
+    }
+  },
+
+  async destroy(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { topic_id } = req.query;
+      
+      await knex('matter')
+        .where({ id, topic_id })
+        .del();
+      
+      return res.send();
+    } catch (error) {
+      next(error);
+    }
+  },
+  
+  async update(req, res, next) {
+    try {
+      const { title, resume, tags } = req.body;
+      const { id } = req.params;
+
+      await knex('matter')
+        .update({
+          title,
+          resume,
+          tags
+        })
+        .where({ id });
+      
+      return res.send();
+    } catch (error) {
+      next(error);
     }
   }
 }
