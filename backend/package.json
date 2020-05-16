@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "crypto": "^1.0.1",
+    "date-fns": "^2.13.0",
+    "date-fns-tz": "^1.0.10",
     "express": "^4.17.1",
     "knex": "^0.21.1",
     "pg": "^8.1.0"
