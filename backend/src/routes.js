@@ -2,6 +2,7 @@ const routes = require('express').Router();
 const UsersController = require('./controller/UsersController');
 const TopicsController = require('./controller/TopicsController');
 const MatterController = require('./controller/MatterController');
+const StudyManagementController = require('./controller/StudyManagementController');
 
 routes
   .get('/users', UsersController.index)
@@ -17,6 +18,8 @@ routes
   .get('/matters', MatterController.index)
   .post('/matters', MatterController.store)
   .delete('/matters/:id', MatterController.destroy)
-  .put('/matters/:id', MatterController.update);
+  .put('/matters/:id', MatterController.update)
+
+  .get('/study', StudyManagementController.studyToday);
 
 module.exports = routes;
