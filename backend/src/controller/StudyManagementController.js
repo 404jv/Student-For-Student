@@ -1,4 +1,5 @@
 const knex = require('../database');
+const { addDays } = require('date-fns');
 const { format } = require('date-fns-tz');
 
 module.exports = {
@@ -17,6 +18,46 @@ module.exports = {
       return res.json(matters);
     } catch (error) {
         next(error);      
+    }
+  },
+
+  async studyCompleted(req, res, next) {
+    try {
+      const { id } = req.params;
+      let nextDay = 0;
+
+      const matter = await knex('matter')
+        .where({ id })
+        .select('totRevisions', 'nextStudy');
+
+      switch (matter[0].totRevisions) {
+        case 0: 
+          //after 30min
+          nextDay = 1;
+          break;
+        case 1:
+          //after 24h
+          nextDay = 7;
+          break;
+        case 2: 
+          //after 7 days
+          nextDay = 31;
+          break;
+        default:
+          //after 2 month
+          nextDay = 60;
+      }
+
+      const nextStudy = addDays(matter[0].nextStudy, nextDay);
+      const totRevisions = matter[0].totRevisions +1;
+
+      await knex('matter')
+        .update({ nextStudy, totRevisions })
+        .where({ id });
+      
+      return res.send();
+    } catch (error) {
+        next(error);
     }
   }
 }
