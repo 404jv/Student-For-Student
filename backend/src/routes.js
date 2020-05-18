@@ -20,6 +20,7 @@ routes
   .delete('/matters/:id', MatterController.destroy)
   .put('/matters/:id', MatterController.update)
 
-  .get('/study', StudyManagementController.studyToday);
+  .get('/study', StudyManagementController.studyToday)
+  .get('/study/:id', StudyManagementController.studyCompleted);
 
 module.exports = routes;
