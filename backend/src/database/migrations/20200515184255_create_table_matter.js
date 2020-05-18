@@ -9,6 +9,7 @@ exports.up = async knex => knex.schema.createTable('matter', table => {
   table.string('resume', 254).notNullable();
   table.string('tags', 10);
   table.timestamp('nextStudy').defaultTo(nextStudy);
+  table.integer('totRevisions').defaultTo(0);
 
   table.string('topic_id')
     .references('topics.id')
