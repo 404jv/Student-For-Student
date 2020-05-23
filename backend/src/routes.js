@@ -10,13 +10,12 @@ routes
   // USERS
   .get('/users', UsersController.index)
   .post('/users', celebrate({
-      [Segments.BODY]: Joi.object().keys({
-        name: Joi.string().required(),
-        email: Joi.string().required(),
-        password: Joi.string().required(),
-      }),
-    }, UsersController.store)
-  )
+    [Segments.BODY]: Joi.object().keys({
+      name: Joi.string().required(),
+      email: Joi.string().required(),
+      password: Joi.string().required(),
+    }),
+  }), UsersController.store)
   .put('/users/:id', celebrate({
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string().required(),
