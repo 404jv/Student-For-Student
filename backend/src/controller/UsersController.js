@@ -1,5 +1,6 @@
 const knex = require('../database');
 const crypto = require('crypto')
+const bcrypt = require('bcrypt');
 
 module.exports = {
   async index(req, res) {
@@ -11,7 +12,8 @@ module.exports = {
 
   async store(req, res, next) {
     try {
-      const { name, email, password } = req.body;
+      const { name, email } = req.body;
+      const password = await bcrypt.hash(req.body.password, 10);      
 
       await knex('users').insert({
         id: crypto.randomBytes(4).toString('HEX'),
