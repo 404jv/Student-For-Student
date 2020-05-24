@@ -4,6 +4,7 @@ const UsersController = require('./controller/UsersController');
 const TopicsController = require('./controller/TopicsController');
 const MatterController = require('./controller/MatterController');
 const StudyManagementController = require('./controller/StudyManagementController');
+const SessionController = require('./controller/SessionController');
 
 routes
 
@@ -31,6 +32,12 @@ routes
       id: Joi.string().required(),
     }),
   }), UsersController.destroy)
+  .post('/users/login', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+      email: Joi.string().required(),
+      password: Joi.string().required(),
+    }),
+  }), SessionController.store)
 
   // TOPICS
   .get('/topics', celebrate({
