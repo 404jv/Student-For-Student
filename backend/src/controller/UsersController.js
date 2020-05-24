@@ -13,7 +13,7 @@ module.exports = {
   async store(req, res, next) {
     try {
       const { name, email } = req.body;
-      const password = await bcrypt.hash(req.body.password, 10);      
+      const password = await bcrypt.hash(req.body.password, 10);
 
       await knex('users').insert({
         id: crypto.randomBytes(4).toString('HEX'),
@@ -38,7 +38,9 @@ module.exports = {
         return res.status(404).send();
       }
 
-      const { name, email, password } = req.body;
+      const { name, email } = req.body;
+      const password = await bcrypt.hash(req.body.password, 10);
+      
 
       await knex('users')
         .update({
