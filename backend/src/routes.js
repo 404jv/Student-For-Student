@@ -5,6 +5,7 @@ const TopicsController = require('./controller/TopicsController');
 const MatterController = require('./controller/MatterController');
 const StudyManagementController = require('./controller/StudyManagementController');
 const SessionController = require('./controller/SessionController');
+const authMiddleware = require('./middlewares/auth');
 
 routes
 
@@ -17,7 +18,7 @@ routes
       password: Joi.string().required(),
     }),
   }), UsersController.store)
-  .put('/users/:id', celebrate({
+  .put('/users/:id', authMiddleware, celebrate({
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string().required(),
       email: Joi.string().required(),
@@ -27,7 +28,7 @@ routes
       id: Joi.string().required(),
     }),
   }), UsersController.update)
-  .delete('/users/:id', celebrate({
+  .delete('/users/:id', authMiddleware, celebrate({
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.string().required(),
     }),
@@ -40,13 +41,13 @@ routes
   }), SessionController.store)
 
   // TOPICS
-  .get('/topics', celebrate({
+  .get('/topics', authMiddleware, celebrate({
     [Segments.QUERY]: {
       user_id: Joi.string().required(),
       page: Joi.number(),
     },
   }), TopicsController.index)
-  .post('/topics', celebrate({
+  .post('/topics', authMiddleware, celebrate({
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string().required(),
     }),
@@ -54,7 +55,7 @@ routes
       user_id: Joi.string().required(),
     },
   }), TopicsController.store)
-  .delete('/topics/:id', celebrate({
+  .delete('/topics/:id', authMiddleware, celebrate({
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.string().required(),
     }),
@@ -62,7 +63,7 @@ routes
       user_id: Joi.string().required(),
     },
   }), TopicsController.destroy)
-  .put('/topics/:id', celebrate({
+  .put('/topics/:id', authMiddleware, celebrate({
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.string().required(),
     }),
@@ -75,13 +76,13 @@ routes
   }), TopicsController.update)
   
   // MATTERS
-  .get('/matters', celebrate({
+  .get('/matters', authMiddleware, celebrate({
     [Segments.QUERY]: {
       topic_id: Joi.string().required(),
       page: Joi.number(),
     },
   }), MatterController.index)
-  .post('/matters', celebrate({
+  .post('/matters', authMiddleware, celebrate({
     [Segments.BODY]: Joi.object().keys({
       title: Joi.string().required(),
       resume: Joi.string().required(),
@@ -91,7 +92,7 @@ routes
       topic_id: Joi.string().required()
     }
   }), MatterController.store)
-  .delete('/matters/:id', celebrate({
+  .delete('/matters/:id', authMiddleware, celebrate({
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.string().required(),
     }),
@@ -99,7 +100,7 @@ routes
       topic_id: Joi.string().required()
     },
   }), MatterController.destroy)
-  .put('/matters/:id', celebrate({
+  .put('/matters/:id', authMiddleware, celebrate({
     [Segments.BODY]: Joi.object().keys({
       title: Joi.string().required(),
       resume: Joi.string().required(),
@@ -111,12 +112,12 @@ routes
   }), MatterController.update)
 
   // STUDYMANEGER
-  .get('/study', celebrate({
+  .get('/study', authMiddleware, celebrate({
     [Segments.QUERY]: {
       topic_id: Joi.string().required(),
     },
   }), StudyManagementController.studyToday)
-  .get('/study/:id', celebrate({
+  .get('/study/:id', authMiddleware, celebrate({
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.string().required(),
     }),
