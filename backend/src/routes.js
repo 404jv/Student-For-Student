@@ -43,25 +43,18 @@ routes
   // TOPICS
   .get('/topics', authMiddleware, celebrate({
     [Segments.QUERY]: {
-      user_id: Joi.string().required(),
       page: Joi.number(),
     },
   }), TopicsController.index)
   .post('/topics', authMiddleware, celebrate({
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string().required(),
-    }),
-    [Segments.QUERY]: {
-      user_id: Joi.string().required(),
-    },
+    })
   }), TopicsController.store)
   .delete('/topics/:id', authMiddleware, celebrate({
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.string().required(),
-    }),
-    [Segments.QUERY]: {
-      user_id: Joi.string().required(),
-    },
+    })
   }), TopicsController.destroy)
   .put('/topics/:id', authMiddleware, celebrate({
     [Segments.PARAMS]: Joi.object().keys({
@@ -69,10 +62,7 @@ routes
     }),
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string().required(),
-    }),
-    [Segments.QUERY]: {
-      user_id: Joi.string().required(),
-    },
+    })
   }), TopicsController.update)
   
   // MATTERS
