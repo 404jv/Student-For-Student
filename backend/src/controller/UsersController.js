@@ -1,4 +1,5 @@
 const knex = require('../database');
+const generateToken = require('../utils/generateToken');
 const crypto = require('crypto')
 const bcrypt = require('bcrypt');
 
@@ -14,15 +15,18 @@ module.exports = {
     try {
       const { name, email } = req.body;
       const password = await bcrypt.hash(req.body.password, 10);
-
+      const id = crypto.randomBytes(4).toString('HEX');
+    
       await knex('users').insert({
-        id: crypto.randomBytes(4).toString('HEX'),
+        id,
         email,
         name,
         password
       });
 
-      return res.status(201).send();
+      return res.status(201).json({
+        token: generateToken({ id: id }),
+      });
     } catch (error) {
         next(error);
     }
