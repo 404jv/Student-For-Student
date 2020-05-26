@@ -4,7 +4,8 @@ const knex = require('../database');
 module.exports = {
   async index(req, res, next) {
     try {
-      const { user_id, page = 1 } = req.query;
+      const { page = 1 } = req.query;
+      const user_id = req.user_id;
 
       const countTopics = knex('topics').count();
 
@@ -27,7 +28,7 @@ module.exports = {
   async store(req, res, next) {
     try {
       const { name } = req.body;
-      const { user_id } = req.query;
+      const user_id  = req.user_id;
 
       await knex('topics')
         .insert({
@@ -45,7 +46,7 @@ module.exports = {
   async destroy(req, res, next) {
     try {
       const { id } = req.params;
-      const { user_id } = req.query;
+      const user_id  = req.user_id;
 
       await knex('topics')
         .where({ id, user_id })
@@ -61,7 +62,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const { name } = req.body;
-      const { user_id } = req.query;
+      const user_id  = req.user_id;
 
       await knex('topics')
         .update({ name })
