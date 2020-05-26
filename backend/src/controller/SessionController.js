@@ -1,13 +1,7 @@
 const knex = require('../database');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const generateToken = require('../utils/generateToken');
 
-function generateToken(params = {}) {
-  return jwt.sign({
-    id: params.id,
-  }, process.env.JWT_KEY, { expiresIn: 86400 });
-}
 
 module.exports = {
   async store(req, res, next) {
