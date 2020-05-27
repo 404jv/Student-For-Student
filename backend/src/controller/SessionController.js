@@ -19,7 +19,11 @@ module.exports = {
       
       return res.json({
         user: user[0],
-        token: generateToken({ id: user[0].id }),
+        token: generateToken({ 
+          id: user[0].id,
+          name: user[0].name,
+          email: user[0].email,
+        }),
       });
     } catch (error) {
         next(error);

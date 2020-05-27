@@ -25,7 +25,11 @@ module.exports = {
       });
 
       return res.status(201).json({
-        token: generateToken({ id: id }),
+        token: generateToken({ 
+          id: id,
+          name: name,
+          email: email,
+        }),
       });
     } catch (error) {
         next(error);
@@ -54,7 +58,13 @@ module.exports = {
         })
         .where({ id });
 
-      return res.send();
+      return res.status(201).json({
+        token: generateToken({ 
+          id: id,
+          name: name,
+          email: email,
+        }),
+      });
     } catch (error) {
         next(error);
     }
