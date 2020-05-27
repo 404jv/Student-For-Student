@@ -23,6 +23,8 @@ module.exports = (req, res, next) => {
       if (err) return res.status(401).send({ message: 'Invalid token' });
       
       req.user_id = decoded.id;
+      req.email = decoded.email;
+      req.name = decoded.name;
       return next();
     });
   } catch (error) {
