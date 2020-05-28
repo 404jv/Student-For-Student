@@ -64,6 +64,11 @@ routes
       name: Joi.string().required(),
     })
   }), TopicsController.update)
+  .get('/topics/find', authMiddleware, celebrate({
+    [Segments.BODY]: Joi.object().keys({
+      name: Joi.string().required(),
+    }),
+  }) , TopicsController.show)
   
   // MATTERS
   .get('/matters', authMiddleware, celebrate({
