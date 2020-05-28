@@ -72,5 +72,20 @@ module.exports = {
     } catch (error) {
         next(error);
     }
-  }
+  },
+
+  async show(req, res, next) {
+    try {
+      const user_id = req.user_id;
+      const { name } = req.body;
+
+      const topics = await knex('topics')
+        .where('name', 'like', `%${name}%`)
+        .where({ user_id });
+
+      return res.json(topics);
+    } catch (error) {
+        next(error);
+    }
+  } 
 }
