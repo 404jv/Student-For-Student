@@ -76,5 +76,20 @@ module.exports = {
     } catch (error) {
       next(error);
     }
-  }
+  },
+
+  async show(req, res, next) {
+    try {
+      const { topic_id } = req.query;
+      const { title } = req.body;
+
+      const matters = await knex('matter')
+        .where('title', 'like', `%${title}%`)
+        .where({ topic_id });
+      
+      return res.json(matters);
+    } catch (error) {
+        next(error)
+    }
+  } 
 }
