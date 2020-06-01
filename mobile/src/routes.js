@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 
-import Menu from './pages/Home';
+import Menu from './components/Menu';
 
 export default function Routes() {
   return (
