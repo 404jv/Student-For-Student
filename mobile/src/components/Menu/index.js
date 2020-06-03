@@ -1,15 +1,27 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AntDesign } from '@expo/vector-icons'
+import { AntDesign, Feather, MaterialIcons } from '@expo/vector-icons'
  
 const Tab =  createBottomTabNavigator();
 
 import Home from '../../pages/Home';
+import Settings from '../../pages/Settings';
+import Profile from '../../pages/Profile';
 
 const icons = {
   Home: {
     lib: AntDesign,
     name: 'home'
+  },
+
+  Settings: {
+    lib: Feather,
+    name: 'settings'
+  },
+
+  Profile: {
+    lib: MaterialIcons,
+    name: 'person'
   }
 }
 
@@ -24,18 +36,35 @@ export default function Menu() {
       })}
       tabBarOptions={{
         style: {
-          backgroundColor: '#212121',
-          borderTopColor: 'rgba(255, 255, 255, 0.2)'
+          borderTopColor: 'rgba(0, 0, 0, 0.2)',
         },
-        activeTintColor: '#1351D8',
-        inactiveTintColor: '#92929C',
+        inactiveTintColor: '#202020',
+        activeTintColor: '#808080', //
       }}
+      initialRouteName='Home'
     >
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: 'Perfil',
+        }}
+      />
+      
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          title: 'Hoje'
+          title: 'Hoje',
+        }}
+        
+      />
+
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          title: 'Configuração',
         }}
       />
     </Tab.Navigator>
