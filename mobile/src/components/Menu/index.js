@@ -39,7 +39,7 @@ export default function Menu() {
           borderTopColor: 'rgba(0, 0, 0, 0.2)',
         },
         inactiveTintColor: '#202020',
-        activeTintColor: '#808080', //
+        activeTintColor: '#808080', 
       }}
       initialRouteName='Home'
     >
