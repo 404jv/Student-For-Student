@@ -6,6 +6,21 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
     paddingTop: Constants.statusBarHeight + 20,
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
   },
+
+  topicTitle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+
+  matter: {
+    margin: 15,
+    padding: 5,
+  },
+
+  matterTitle: {
+    fontSize: 20
+  },
+
 });
