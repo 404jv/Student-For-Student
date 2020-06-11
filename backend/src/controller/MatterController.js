@@ -1,5 +1,6 @@
 const knex = require('../database');
 const crypto = require('crypto');
+const { format } = require('date-fns-tz');
 
 module.exports = {
   async index(req, res, next) {
@@ -8,17 +9,21 @@ module.exports = {
 
       const countMatter = knex('matter').count();
 
-      const matter = await knex('matter')
+      const matters = await knex('matter')
         .limit(5)
         .offset((page -1) * 5)
         .where({ topic_id })
         countMatter
         .where({ topic_id });
 
+      matters.map(matter => 
+        matter.nextStudy = format(matter.nextStudy, 'dd/MM/yyyy')
+      );
+
       const [count] = await countMatter;
       res.header('X-Total-Count', count['count']);
 
-      return res.json(matter)
+      return res.json(matters)
 
     } catch (error) {
         next(error);
