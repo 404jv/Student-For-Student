@@ -115,6 +115,8 @@ routes
   }), MatterController.show)
 
   // STUDYMANEGER
+  .get('/study/all', authMiddleware, StudyManagementController.studyAll)
+  
   .get('/study', authMiddleware, celebrate({
     [Segments.QUERY]: {
       topic_id: Joi.string().required(),
@@ -125,5 +127,6 @@ routes
       id: Joi.string().required(),
     }),
   }), StudyManagementController.studyCompleted);
+  
 
 module.exports = routes;
