@@ -79,6 +79,7 @@ module.exports = {
         );
 
         const study = {
+          id: topic.id,
           topicName: topic.name,
           metters
         };
