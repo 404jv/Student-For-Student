@@ -59,5 +59,33 @@ module.exports = {
     } catch (error) {
         next(error);
     }
-  }
+  },
+
+  async studyAll(req, res, next) {
+    try {
+      const user_id = req.user_id;
+      const studysArry = [];
+      const trx = await knex.transaction();
+
+      const topics = await trx('topics')
+        .where({ user_id }).catch(err => console.log(err));
+
+      for (topic of topics) {
+        const metters = await trx('matter')
+          .where('topic_id', topic.id);
+
+        const study = {
+          topicName: topic.name,
+          metters
+        };
+
+        studysArry.push(study);
+      }
+      
+
+      return res.json(studysArry);
+    } catch (error) {
+        next(error);
+    }
+  },
 }
