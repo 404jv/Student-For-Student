@@ -74,6 +74,10 @@ module.exports = {
         const metters = await trx('matter')
           .where('topic_id', topic.id);
 
+        metters.map(matter =>
+          matter.nextStudy = format(matter.nextStudy, 'dd/MM/yyyy')
+        );
+
         const study = {
           topicName: topic.name,
           metters
