@@ -32,13 +32,12 @@ export default StyleSheet.create({
 
   matter: {
     margin: 8,
-    justifyContent: 'center',
     borderWidth: 2,
     borderColor: '#525759',
     borderRadius: 8,
     height: 90,
     width: 90,
-    textAlign: 'center'
+    alignItems: 'center',
   },
 
   matterTitle: {
