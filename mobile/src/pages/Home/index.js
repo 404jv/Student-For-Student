@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { 
+  Text, 
+  View, 
+  ScrollView, 
+  TouchableOpacity, 
+  TextInput 
+} from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons'
 import { AppLoading } from 'expo';
 import { 
@@ -13,6 +19,7 @@ import api from '../../services/api';
 
 export default function Home() {
   const [studys, setStudys] = useState([]);
+  const [findStudy, setFindStudy] = useState('');
 
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
@@ -29,6 +36,21 @@ export default function Home() {
     });
   }, []);
 
+  function handleClearInput() {
+    console.log('adasd');
+    setFindStudy('');
+  }
+
+  function handlefindStudy() {
+    api.get('/topics/find', {
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMjJmZDZjIiwibmFtZSI6InRlc3QxIiwiZW1haWwiOiJ0ZXN0MUAiLCJpYXQiOjE1OTA2MjI5MDB9.2vA8PD21i5F5ZQkPztgXOOCv4idU8q4gQvHEyBFt2k8'
+      },
+      name: 'meu topic'
+    }).then(res => {
+      console.log(res.data);
+    });
+  }
 
   if (!fontsLoaded)
     return <AppLoading />;
@@ -36,6 +58,34 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <View style={styles.groupTopics}>
+
+        <View style={styles.searchContainer}>
+          <Icon 
+            name="search"
+            size={20}
+            style={styles.searchIcon}
+          />
+          <TextInput 
+            style={styles.input}
+            placeholder="Procurar um tópico"
+            underlineColorAndroid="transparent"
+            onChangeText={setFindStudy}
+            onChange={handlefindStudy}
+            value={findStudy}
+          />
+          
+          <TouchableOpacity
+            onPress={handleClearInput}
+            activeOpacity={0.6}
+          >
+            <Icon 
+              name="x"
+              size={20}
+              style={styles.searchIcon}
+              color="#808080"
+            />
+          </TouchableOpacity>
+        </View>
 
         {studys.map(study => (
           <View key={study.id} style={study.topic}>
