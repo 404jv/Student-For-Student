@@ -71,17 +71,17 @@ module.exports = {
         .where({ user_id }).catch(err => console.log(err));
 
       for (topic of topics) {
-        const metters = await trx('matter')
+        const matters = await trx('matter')
           .where('topic_id', topic.id);
 
-        metters.map(matter =>
+        matters.map(matter =>
           matter.nextStudy = format(matter.nextStudy, 'dd/MM/yyyy')
         );
 
         const study = {
           id: topic.id,
           topicName: topic.name,
-          metters
+          matters: matters
         };
 
         studysArry.push(study);
