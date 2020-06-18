@@ -65,7 +65,7 @@ routes
     })
   }), TopicsController.update)
   .get('/topics/find', authMiddleware, celebrate({
-    [Segments.BODY]: Joi.object().keys({
+    [Segments.QUERY]: Joi.object().keys({
       name: Joi.string().required(),
     }),
   }) , TopicsController.show)
