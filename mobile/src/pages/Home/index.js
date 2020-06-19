@@ -19,7 +19,8 @@ import api from '../../services/api';
 
 export default function Home() {
   const [studys, setStudys] = useState([]);
-  const [findStudy, setFindStudy] = useState('');
+  const [findTopic, setFindTopic] = useState('');
+  const [findTopics, setFindTopics] = useState([]);
 
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
@@ -37,19 +38,20 @@ export default function Home() {
   }, []);
 
   function handleClearInput() {
-    console.log('adasd');
-    setFindStudy('');
+    findTopic('');
   }
 
-  function handlefindStudy() {
+  function handlefindTopic() {
     api.get('/topics/find', {
       headers: {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMjJmZDZjIiwibmFtZSI6InRlc3QxIiwiZW1haWwiOiJ0ZXN0MUAiLCJpYXQiOjE1OTA2MjI5MDB9.2vA8PD21i5F5ZQkPztgXOOCv4idU8q4gQvHEyBFt2k8'
       },
-      name: 'meu topic'
+      params: {
+        name: findTopic
+      }
     }).then(res => {
-      console.log(res.data);
-    });
+      setFindTopics(res.data);
+    })
   }
 
   if (!fontsLoaded)
@@ -69,9 +71,9 @@ export default function Home() {
             style={styles.input}
             placeholder="Procurar um tópico"
             underlineColorAndroid="transparent"
-            onChangeText={setFindStudy}
-            onChange={handlefindStudy}
-            value={findStudy}
+            onChangeText={setFindTopic}
+            onChange={handlefindTopic}
+            value={findTopic}
           />
           
           <TouchableOpacity
