@@ -36,5 +36,27 @@ export default StyleSheet.create({
     borderBottomWidth: 0.5,
     borderColor: '#000',
     width: '100%',
+  },
+
+  groupTopics: {
+    flex: 1,
+  },
+
+  topic: {
+    alignContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 20,
+    marginBottom: 8,
+    marginLeft: 8,
+    marginRight: 8
+  },
+
+
+  topicName: {
+    fontSize: 24,
+    fontFamily: 'Roboto_400Regular'
   }
+
 });
