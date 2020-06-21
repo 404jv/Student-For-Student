@@ -10,8 +10,8 @@ import Profile from '../../pages/Profile';
 
 const icons = {
   Home: {
-    lib: AntDesign,
-    name: 'home'
+    lib: Feather,
+    name: 'book-open'
   },
 
   Settings: {
@@ -22,7 +22,7 @@ const icons = {
   Profile: {
     lib: MaterialIcons,
     name: 'person'
-  }
+  },
 }
 
 export default function Menu() {
@@ -55,7 +55,7 @@ export default function Menu() {
         name="Home"
         component={Home}
         options={{
-          title: 'Hoje',
+          title: 'Estudos',
         }}
         
       />
