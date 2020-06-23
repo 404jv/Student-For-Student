@@ -18,8 +18,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 40,
-    borderRadius: 8,
   },
 
   searchIcon: {
@@ -40,23 +38,46 @@ export default StyleSheet.create({
 
   groupTopics: {
     flex: 1,
+    alignItems: 'center',
   },
 
   topic: {
-    alignContent: 'center',
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     marginTop: 20,
-    marginBottom: 8,
-    marginLeft: 8,
-    marginRight: 8
+    width: '95%',
+    height: 150,
+    borderRadius: 8,
+    backgroundColor: '#FFF',
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.00,
+    elevation: 24,
   },
 
 
+  topicImage: {
+    width: '82%',
+    height: '76%',
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    marginBottom: 3
+  },
+
+  topicInfo: {
+    width: '78%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginLeft: 15,
+  },
+
   topicName: {
     fontSize: 24,
-    fontFamily: 'Roboto_400Regular'
-  }
-
+    fontFamily: 'Roboto_400Regular',
+  },
 });

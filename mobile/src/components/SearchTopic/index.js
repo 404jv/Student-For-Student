@@ -4,6 +4,7 @@ import {
   TouchableOpacity, 
   TextInput,
   Text,
+  Image
 } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 
@@ -76,13 +77,12 @@ export default function SearchTopic({ handleSelectedInput }) {
       </View>
       <View style={styles.lineBottom} />
 
-      <View style={styles.groupTopics}>
-        {findTopics.map(topic => (
-          <>
+      {<View style={styles.groupTopics}>
+        {/* findTopics.map(topic => (
+          <View key={topic.id} style={styles.topic}>
             <TouchableOpacity 
-              key={topic.id} 
-              style={styles.topic}
-              activeOpacity={0.6}
+            
+            activeOpacity={0.6}
             >
                 <Text style={styles.topicName}>{topic.name}</Text>
                 <Icon 
@@ -90,10 +90,32 @@ export default function SearchTopic({ handleSelectedInput }) {
                   size={20}
                 />
             </TouchableOpacity>
-            <View style={styles.lineBottom} />
-          </>
-        ))}
+          </View>
+        )) */}
+        <View style={styles.topic}>
+          <TouchableOpacity 
+            activeOpacity={0.6}
+          >
+          <Image 
+            source={require('./uploads/art.jpg')}
+            style={styles.topicImage}
+          />
+          <View style={styles.topicInfo}>
+            <Text style={styles.topicName}>Meu Topic</Text>
+            <Icon 
+              name="arrow-right"
+              size={20}
+              style={styles.button}
+            />
+          </View>
+          </TouchableOpacity>
+        </View>
+      <View style={styles.topic}>
       </View>
+      </View>}
+
+
+
     </View>
   );
 }
