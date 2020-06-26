@@ -95,8 +95,15 @@ module.exports = {
       const topics = await knex('topics')
         .where('name', 'ilike', `%${name}%`)
         .where({ user_id });
+      
+        const serializedTopics = topics.map(topic => {
+        return {
+          ...topic,
+          image_url: `http://192.168.1.5:3333/uploads/${topic.image_name}`
+        }
+      });
 
-      return res.json(topics).status(200);
+      return res.json(serializedTopics).status(200);
     } catch (error) {
         next(error);
     }
