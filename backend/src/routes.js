@@ -49,7 +49,7 @@ routes
   .post('/topics', authMiddleware, celebrate({
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string().required(),
-      img_url: Joi.string().required(),
+      image_name: Joi.string().required(),
     })
   }), TopicsController.store)
   .delete('/topics/:id', authMiddleware, celebrate({
@@ -63,7 +63,7 @@ routes
     }),
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string().required(),
-      img_url: Joi.string().required(),
+      image_name: Joi.string().required(),
     })
   }), TopicsController.update)
   .get('/topics/find', authMiddleware, celebrate({
