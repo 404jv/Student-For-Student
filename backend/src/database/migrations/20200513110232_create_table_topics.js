@@ -3,6 +3,7 @@ const { onUpdateTrigger } = require('../../../knexfile');
 exports.up = async knex => knex.schema.createTable('topics', table => {
   table.string('id', 8).primary();
   table.string('name', 10).notNullable();
+  table.string('img_url').notNullable();
 
   table.string('user_id')
     .references('users.id')
