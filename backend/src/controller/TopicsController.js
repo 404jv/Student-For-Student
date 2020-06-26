@@ -32,13 +32,14 @@ module.exports = {
   
   async store(req, res, next) {
     try {
-      const { name } = req.body;
+      const { name, img_url } = req.body;
       const user_id  = req.user_id;
 
       await knex('topics')
         .insert({
           id: crypto.randomBytes(4).toString('HEX'),
           name,
+          img_url,
           user_id
         });
 
@@ -66,11 +67,11 @@ module.exports = {
   async update(req, res, next) {
     try {
       const { id } = req.params;
-      const { name } = req.body;
+      const { name, img_url } = req.body;
       const user_id  = req.user_id;
 
       await knex('topics')
-        .update({ name })
+        .update({ name, img_url })
         .where({ id, user_id });
 
       return res.send();
