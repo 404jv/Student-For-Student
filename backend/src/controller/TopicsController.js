@@ -24,7 +24,14 @@ module.exports = {
       const [count] = await countTopics;
       res.header('X-Total-Count', count['count']);
 
-      return res.json(topics);
+      const serializedTopics = topics.map(topic => {
+        return {
+          ...topic,
+          image_url: `http://192.168.1.5:3333/uploads/${topic.image_name}`
+        }
+      });
+
+      return res.json(serializedTopics);
     } catch (error) {
         next(error);
     }
@@ -32,14 +39,14 @@ module.exports = {
   
   async store(req, res, next) {
     try {
-      const { name, img_url } = req.body;
+      const { name, image_name } = req.body;
       const user_id  = req.user_id;
 
       await knex('topics')
         .insert({
           id: crypto.randomBytes(4).toString('HEX'),
           name,
-          img_url,
+          image_name,
           user_id
         });
 
@@ -67,11 +74,11 @@ module.exports = {
   async update(req, res, next) {
     try {
       const { id } = req.params;
-      const { name, img_url } = req.body;
+      const { name, image_name } = req.body;
       const user_id  = req.user_id;
 
       await knex('topics')
-        .update({ name, img_url })
+        .update({ name, image_name })
         .where({ id, user_id });
 
       return res.send();
