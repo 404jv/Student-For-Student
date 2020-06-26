@@ -8,16 +8,19 @@ exports.seed = knex =>
         { 
           id: '80c2168a',
           name: 'Projeto my',
+          img_url: 'http://localhost:3333/uploads/art.jpg',
           user_id: 'e742b377'
         },
         { 
           id: 'e1048a89',
           name: 'Projeto my',
+          img_url: 'http://localhost:3333/uploads/math.jpg',
           user_id: 'e742b377'
         },
         { 
           id: 'f4455e45',
           name: 'Projeto my',
+          img_url: 'http://localhost:3333/uploads/atom.jpg',
           user_id: '37eadd35'
         }
       ])
