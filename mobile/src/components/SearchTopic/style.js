@@ -38,16 +38,16 @@ export default StyleSheet.create({
 
   groupTopics: {
     flex: 1,
-    alignItems: 'center',
+    marginLeft: 13
   },
 
   topic: {
     flexDirection: 'row',
     marginTop: 20,
-    width: '95%',
+    width: 331,
     height: 150,
     borderRadius: 8,
-    backgroundColor: '#FFF',
+    backgroundColor: '#e9ecee',
 
     shadowColor: "#000",
     shadowOffset: {
@@ -56,12 +56,11 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.58,
     shadowRadius: 16.00,
-    elevation: 24,
   },
 
 
   topicImage: {
-    width: '82%',
+    width: 331,
     height: '76%',
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
@@ -79,5 +78,6 @@ export default StyleSheet.create({
   topicName: {
     fontSize: 24,
     fontFamily: 'Roboto_400Regular',
+    color: '#1d2a30'
   },
 });

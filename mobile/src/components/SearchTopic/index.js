@@ -4,7 +4,8 @@ import {
   TouchableOpacity, 
   TextInput,
   Text,
-  Image
+  Image,
+  FlatList
 } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 
@@ -23,7 +24,7 @@ export default function SearchTopic({ handleSelectedInput }) {
   function handlefindTopic() {
     api.get('/topics/find', {
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMjJmZDZjIiwibmFtZSI6InRlc3QxIiwiZW1haWwiOiJ0ZXN0MUAiLCJpYXQiOjE1OTA2MjI5MDB9.2vA8PD21i5F5ZQkPztgXOOCv4idU8q4gQvHEyBFt2k8'
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2NDg3ZjY4IiwibmFtZSI6InRlc3QxMiIsImVtYWlsIjoidGVzdDIxQCIsImlhdCI6MTU5MzEzNDg5NX0.AdITwp9woCIbS1CBZl2nGPiSxRPk4fO6P-6pVGo3nNU'
       },
       params: {
         name: findTopic
@@ -34,7 +35,7 @@ export default function SearchTopic({ handleSelectedInput }) {
   }
 
   function handleNavigateBack() {
-    handleSelectedInput(false)
+    handleSelectedInput(false);
   }
 
   return (
@@ -77,45 +78,34 @@ export default function SearchTopic({ handleSelectedInput }) {
       </View>
       <View style={styles.lineBottom} />
 
-      {<View style={styles.groupTopics}>
-        {/* findTopics.map(topic => (
-          <View key={topic.id} style={styles.topic}>
+      <FlatList 
+        data={findTopics}
+        style={styles.groupTopics}
+        keyExtractor={topic => String(topic.id)}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        onEndReachedThreshold={0.2}
+        renderItem={({ item: topic }) => (
+          <View style={styles.topic}>
             <TouchableOpacity 
-            
-            activeOpacity={0.6}
+              activeOpacity={0.6}
             >
-                <Text style={styles.topicName}>{topic.name}</Text>
+              <Image 
+                source={require('./uploads/art.jpg')}
+                style={styles.topicImage}
+              />
+              <View style={styles.topicInfo}>
+              <Text style={styles.topicName}>{topic.name}</Text>
                 <Icon 
                   name="arrow-right"
                   size={20}
+                  style={styles.button}
                 />
+              </View>
             </TouchableOpacity>
           </View>
-        )) */}
-        <View style={styles.topic}>
-          <TouchableOpacity 
-            activeOpacity={0.6}
-          >
-          <Image 
-            source={require('./uploads/art.jpg')}
-            style={styles.topicImage}
-          />
-          <View style={styles.topicInfo}>
-            <Text style={styles.topicName}>Meu Topic</Text>
-            <Icon 
-              name="arrow-right"
-              size={20}
-              style={styles.button}
-            />
-          </View>
-          </TouchableOpacity>
-        </View>
-      <View style={styles.topic}>
-      </View>
-      </View>}
-
-
-
+        )}
+      />
     </View>
   );
 }
