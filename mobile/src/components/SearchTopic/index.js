@@ -24,7 +24,7 @@ export default function SearchTopic({ handleSelectedInput }) {
   function handlefindTopic() {
     api.get('/topics/find', {
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2NDg3ZjY4IiwibmFtZSI6InRlc3QxMiIsImVtYWlsIjoidGVzdDIxQCIsImlhdCI6MTU5MzEzNDg5NX0.AdITwp9woCIbS1CBZl2nGPiSxRPk4fO6P-6pVGo3nNU'
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
       },
       params: {
         name: findTopic
@@ -91,7 +91,7 @@ export default function SearchTopic({ handleSelectedInput }) {
               activeOpacity={0.6}
             >
               <Image 
-                source={require('./uploads/art.jpg')}
+                source={{ uri: topic.image_url}}
                 style={styles.topicImage}
               />
               <View style={styles.topicInfo}>
