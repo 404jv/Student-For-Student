@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const knex = require('../database');
+const { format } = require('date-fns-tz');
 
 module.exports = {
   async index(req, res, next) {
@@ -15,6 +16,10 @@ module.exports = {
         .where({ user_id })
         countTopics
         .where({ user_id });
+
+      topics.map(topic =>
+        topic.created_at = format(topic.created_at, 'dd/MM/yyyy')
+      );
 
       const [count] = await countTopics;
       res.header('X-Total-Count', count['count']);
