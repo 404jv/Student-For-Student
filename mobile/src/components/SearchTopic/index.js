@@ -7,15 +7,17 @@ import {
   Image,
   FlatList
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
 
 import styles from './style';
 import api from '../../services/api';
 
-export default function SearchTopic({ handleSelectedInput }) {
+export default function SearchTopic() {
   const [findTopic, setFindTopic] = useState('');
   const [findTopics, setFindTopics] = useState([]);
-  const [selectedInput, setSelectedInput] = useState(false);
+
+  const navigation = useNavigation();
 
   function handleClearInput() {
     setFindTopic('');
@@ -35,7 +37,7 @@ export default function SearchTopic({ handleSelectedInput }) {
   }
 
   function handleNavigateBack() {
-    handleSelectedInput(false);
+    navigation.goBack('Home')
   }
 
   return (
@@ -55,10 +57,7 @@ export default function SearchTopic({ handleSelectedInput }) {
           style={styles.input}
           placeholder="Procurar um tópico"
           underlineColorAndroid="transparent"
-          onChangeText={(text) => {
-            setFindTopic(text);
-            setSelectedInput(true);
-          }}
+          onChangeText={setFindTopic}
           onChange={handlefindTopic}
           value={findTopic}
           autoFocus
