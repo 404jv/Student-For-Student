@@ -5,6 +5,7 @@ import {
   ScrollView, 
   TouchableOpacity, 
 } from 'react-native';
+import { useNavigation  } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
 import { AppLoading } from 'expo';
 import { 
@@ -19,6 +20,8 @@ import api from '../../services/api';
 export default function Home() {
   const [studys, setStudys] = useState([]);
 
+  const navigation = useNavigation();
+
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold
@@ -27,19 +30,23 @@ export default function Home() {
   useEffect(() => {
     api.get('study/all', {
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMjJmZDZjIiwibmFtZSI6InRlc3QxIiwiZW1haWwiOiJ0ZXN0MUAiLCJpYXQiOjE1OTA2MjI5MDB9.2vA8PD21i5F5ZQkPztgXOOCv4idU8q4gQvHEyBFt2k8'
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
       },
     }).then(res => {
       setStudys(res.data);
     });
   }, []);
 
+  function handleNavigateToMatters() {
+    navigation.navigate('Matters');
+  }
+
   if (!fontsLoaded)
     return <AppLoading />;
 
   return (
     <View style={styles.container}>
-      <View style={styles.groupTopics}>
+      <View>
         {studys.map(study => (
           <View key={study.id} style={study.topic}>
             <Text style={styles.topicTitle}>{study.topicName}</Text>
@@ -81,6 +88,7 @@ export default function Home() {
             <TouchableOpacity 
               style={styles.button}
               activeOpacity={0.6}
+              onPress={handleNavigateToMatters}
             >
               <Text style={styles.textButton}>Ver tudo</Text>
               <Icon 

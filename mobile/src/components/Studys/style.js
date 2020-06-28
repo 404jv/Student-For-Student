@@ -1,10 +1,5 @@
 import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
-import { 
-  useFonts, 
-  Roboto_400Regular, 
-  Roboto_700Bold 
-} from '@expo-google-fonts/roboto';
 
 export default StyleSheet.create({
 
