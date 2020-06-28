@@ -79,11 +79,13 @@ export default function SearchTopic() {
 
       <FlatList 
         data={findTopics}
-        style={styles.groupTopics}
         keyExtractor={topic => String(topic.id)}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         onEndReachedThreshold={0.2}
+        contentContainerStyle={{
+          alignItems: 'center'
+        }}
         renderItem={({ item: topic }) => (
           <View style={styles.topic}>
             <TouchableOpacity 

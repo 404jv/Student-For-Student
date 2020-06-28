@@ -36,11 +36,6 @@ export default StyleSheet.create({
     width: '100%',
   },
 
-  groupTopics: {
-    flex: 1,
-    marginLeft: 13
-  },
-
   topic: {
     flexDirection: 'row',
     marginTop: 20,
