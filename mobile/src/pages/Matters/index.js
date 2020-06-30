@@ -6,7 +6,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import { useRoute } from '@react-navigation/native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
 
 import api from '../../services/api';
@@ -15,9 +15,14 @@ import styles from './style';
 
 export default function Matter() {
   const [matters, setMatters] = useState([]);
-  const route = useRoute();
 
-  const topic_id = route.params.topic_id;
+  const route = useRoute();
+  const navigation = useNavigation();
+
+  const topic = {
+    id: route.params.topic_id,
+    name: route.params.topic_name,
+  };
 
   useEffect(() => {
     api.get('matters', {
@@ -25,19 +30,37 @@ export default function Matter() {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
       },
       params: {
-        topic_id: topic_id
+        topic_id: topic.id,
       },
     }).then(res => {
       setMatters(res.data);
     });
   }, []);
-  
+
+  function handleNavigationBack() {
+    navigation.goBack();
+  }
+
   return (
     <SafeAreaView style={styles.container}>
+
+      <View style={styles.header}>
+        <Icon 
+          name="arrow-left"
+          size={20}
+          onPress={handleNavigationBack}
+        />
+        <Text 
+          style={styles.topicName}
+        >{topic.name}</Text>
+      </View>
+      <View style={styles.lineBottom} />
+
       <ScrollView 
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          alignItems: 'center'
+          alignItems: 'center',
+          marginTop: 20,
         }}
       >
         {matters.map(matter => (

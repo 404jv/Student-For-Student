@@ -5,11 +5,30 @@ export default StyleSheet.create({
 
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight,
+    paddingTop: Constants.statusBarHeight + 10,
     backgroundColor: '#FFF',
   },
 
-  mattersGroup:  {
+  header: {
+    flexDirection: 'row',
+    marginBottom: 22,
+    alignItems: 'center',
+    marginLeft: 8,
+    marginRight: 8,
+    marginBottom: 8
+  },
+  
+  lineBottom: {
+    borderBottomWidth: 0.5,
+    borderColor: '#000',
+    width: '100%',
+  },
+
+  topicName: {
+    fontWeight: 'bold',
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 25,
+    marginLeft: 90,
   },
 
   matter: {
