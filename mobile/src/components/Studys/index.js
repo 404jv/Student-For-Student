@@ -30,15 +30,15 @@ export default function Home() {
   useEffect(() => {
     api.get('study/all', {
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzNDgzNDE3fQ.nur6JngT0OnJl3GSo036qSyrWGSqri8HDhnm-XmX_ng'
       },
     }).then(res => {
       setStudys(res.data);
     });
   }, []);
 
-  function handleNavigateToMatters(topic_id) {
-    navigation.navigate('Matters', { topic_id });
+  function handleNavigateToMatters(topic_id, topic_name) {
+    navigation.navigate('Matters', { topic_id, topic_name });
   }
 
   if (!fontsLoaded)
@@ -88,7 +88,7 @@ export default function Home() {
             <TouchableOpacity 
               style={styles.button}
               activeOpacity={0.6}
-              onPress={() => handleNavigateToMatters(study.id)}
+              onPress={() => handleNavigateToMatters(study.id, study.topicName)}
             >
               <Text style={styles.textButton}>Ver tudo</Text>
               <Icon 
