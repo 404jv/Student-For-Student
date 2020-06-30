@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
 
 export default StyleSheet.create({
 
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 5,
+    marginTop: 15,
     backgroundColor: '#FFF'
   },
 
@@ -16,7 +15,7 @@ export default StyleSheet.create({
   topicTitle: {
     fontWeight: 'bold',
     fontFamily: 'Roboto_700Bold',
-    fontSize: 20,
+    fontSize: 25,
     marginLeft: 20
   },
 
