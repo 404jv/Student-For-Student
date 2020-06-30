@@ -27,14 +27,18 @@ export default function Studys() {
     Roboto_700Bold
   });
   
-  useEffect(() => {
-    api.get('study/all', {
+  async function loadStudys() {
+    const res = await api.get('study/all', {
       headers: {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzNDgzNDE3fQ.nur6JngT0OnJl3GSo036qSyrWGSqri8HDhnm-XmX_ng'
       },
-    }).then(res => {
-      setStudys(res.data);
     });
+
+    setStudys(res.data);
+  };
+
+  useEffect(() => {
+    loadStudys();
   }, []);
 
   function handleNavigateToMatters(topic_id, topic_name) {
@@ -46,6 +50,17 @@ export default function Studys() {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        onPress={loadStudys}
+        activeOpacity={0.6}
+        style={{
+          marginLeft: 10,
+          marginBottom: 8,
+          left: '85%'
+        }}
+      >
+        <Icon name="refresh-ccw" size={30} />
+      </TouchableOpacity>
       <View>
         {studys.map(study => (
           <View key={study.id} style={study.topic}>
