@@ -42,6 +42,15 @@ export default StyleSheet.create({
     height: 250,
   },
 
+  matterHeader: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  groupIcons: {
+    left: 75,
+  },
+
   title: {
     fontWeight: 'bold',
     fontFamily: 'Roboto_700Bold',
@@ -88,7 +97,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginLeft: 8,
-    marginRight: 4,
+    marginRight: 8,
   },
 
   textButton: {

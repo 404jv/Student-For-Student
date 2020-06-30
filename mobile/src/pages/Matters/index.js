@@ -41,6 +41,19 @@ export default function Matter() {
     navigation.goBack();
   }
 
+  async function handleDeleteMatter(id) {
+    await api.delete(`/matters/${id}`, {
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
+      },
+      params: {
+        topic_id: topic.id
+      }
+    });
+
+    setMatters(matters.filter(matter => matter.id !== id));
+  }
+
   return (
     <SafeAreaView style={styles.container}>
 
@@ -68,7 +81,28 @@ export default function Matter() {
             key={matter.id} 
             style={styles.matter}
           >
-            <Text style={styles.title}>{matter.title}</Text>
+            <View style={styles.matterHeader}>
+              <Text style={styles.title}>{matter.title}</Text>
+              
+              <View style={styles.groupIcons}>
+
+                <TouchableOpacity
+                  activeOpacity={0.6}
+                  style={{ marginTop: 8}}
+                  onPress={() => handleDeleteMatter(matter.id)}
+                >
+                  <Icon name="trash-2" color="#1d2a30" size={25} />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  activeOpacity={0.6}
+                  style={{ marginTop: 8}}
+                >
+                  <Icon name="edit" color="#1d2a30" size={25} />
+                </TouchableOpacity>
+                
+              </View>
+            </View>
             
             <Text style={styles.strong}>Próxima revisão:</Text>
             <Text style={styles.span}>{matter.nextStudy}</Text>
