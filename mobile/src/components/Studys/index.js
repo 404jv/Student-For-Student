@@ -37,8 +37,8 @@ export default function Home() {
     });
   }, []);
 
-  function handleNavigateToMatters() {
-    navigation.navigate('Matters');
+  function handleNavigateToMatters(topic_id) {
+    navigation.navigate('Matters', { topic_id });
   }
 
   if (!fontsLoaded)
@@ -88,7 +88,7 @@ export default function Home() {
             <TouchableOpacity 
               style={styles.button}
               activeOpacity={0.6}
-              onPress={handleNavigateToMatters}
+              onPress={() => handleNavigateToMatters(study.id)}
             >
               <Text style={styles.textButton}>Ver tudo</Text>
               <Icon 
