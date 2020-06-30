@@ -5,7 +5,7 @@ import {
   ScrollView, 
   TouchableOpacity, 
 } from 'react-native';
-import { useNavigation  } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
 import { AppLoading } from 'expo';
 import { 
@@ -17,7 +17,7 @@ import {
 import styles from './style';
 import api from '../../services/api';
 
-export default function Home() {
+export default function Studys() {
   const [studys, setStudys] = useState([]);
 
   const navigation = useNavigation();
