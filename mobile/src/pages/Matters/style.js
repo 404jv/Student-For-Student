@@ -44,11 +44,11 @@ export default StyleSheet.create({
 
   matterHeader: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
 
   groupIcons: {
-    left: 75,
+    marginRight: 8,
   },
 
   title: {
@@ -57,7 +57,7 @@ export default StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     color: '#1d2a30',
-    left: 9
+    marginLeft: 8
   },
 
   strong: {

@@ -82,7 +82,7 @@ export default function Matter() {
             style={styles.matter}
           >
             <View style={styles.matterHeader}>
-              <Text style={styles.title}>{matter.title}</Text>
+              <Text style={styles.title}>{matter.title.substring(0, 7)}</Text>
               
               <View style={styles.groupIcons}>
 
