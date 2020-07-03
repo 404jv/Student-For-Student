@@ -90,10 +90,10 @@ export default function Studys() {
                     >
                       <Text 
                         style={styles.matterTitle}
-                      >{matter.title.substring(0, 11)}
+                      >{matter.title.substring(0, 5)}
                       </Text>
                       <Text 
-                        style={styles.matterTags}
+                        style={styles.nextStudy}
                       >{matter.nextStudy}
                       </Text>
                     </TouchableOpacity>

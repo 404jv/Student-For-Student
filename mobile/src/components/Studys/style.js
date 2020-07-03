@@ -38,13 +38,15 @@ export default StyleSheet.create({
   matterTitle: {
     textAlign: 'center',
     fontSize: 25,
+    marginBottom: 8,
     fontFamily: 'Roboto_400Regular'
   },
 
-  matterTags: {
+  nextStudy: {
     textAlign: 'center',
-    fontSize: 10,
-    fontFamily: 'Roboto_400Regular'
+    fontSize: 15,
+    fontFamily: 'Roboto_400Regular',
+    marginTop: 10
   },
 
   button: {

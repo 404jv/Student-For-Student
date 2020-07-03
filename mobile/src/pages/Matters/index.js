@@ -108,7 +108,7 @@ export default function Matter() {
             <Text style={styles.span}>{matter.nextStudy}</Text>
 
             <View style={styles.reviewGroup}>
-              <Text style={styles.strong}>Total de Revisões: </Text>
+              <Text style={styles.strong}>Total de revisões: </Text>
               <Text style={styles.spanReview}>{matter.totRevisions}</Text>
             </View>
 

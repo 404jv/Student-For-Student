@@ -56,20 +56,22 @@ export default StyleSheet.create({
     fontFamily: 'Roboto_700Bold',
     fontSize: 30,
     textAlign: 'center',
-    color: '#1d2a30'
+    color: '#1d2a30',
+    left: 9
   },
 
   strong: {
     fontFamily: 'Roboto_400Regular',
     fontSize: 20,
-    margin: 8,
     color: '#3d4042',
   },
 
   span: {
     color: '#73797d',
     fontSize: 16,
-    marginLeft: 25
+    marginLeft: 25,
+    marginTop: 4,
+    marginBottom: 4
   },
 
   spanReview: {
