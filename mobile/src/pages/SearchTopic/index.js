@@ -39,6 +39,10 @@ export default function SearchTopic() {
   function handleNavigateBack() {
     navigation.goBack('Home')
   }
+  
+  function handleNavigateToMatters(topic_id, topic_name) {
+    navigation.navigate('Matters', { topic_id, topic_name });
+  }
 
   return (
     <View style={styles.container}>
@@ -90,6 +94,7 @@ export default function SearchTopic() {
           <View style={styles.topic}>
             <TouchableOpacity 
               activeOpacity={0.6}
+              onPress={() => handleNavigateToMatters(topic.id, topic.name)}
             >
               <Image 
                 source={{ uri: topic.image_url}}
