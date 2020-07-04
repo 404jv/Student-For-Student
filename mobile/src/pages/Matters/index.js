@@ -41,6 +41,10 @@ export default function Matter() {
     navigation.goBack();
   }
 
+  function handleNavigateToDetail(matter) {
+    navigation.navigate('Detail', matter);    
+  }
+
   async function handleDeleteMatter(id) {
     await api.delete(`/matters/${id}`, {
       headers: {
@@ -114,7 +118,10 @@ export default function Matter() {
 
             <Text style={styles.tags}>{matter.tags}</Text>
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity 
+              style={styles.button}
+              onPress={() => handleNavigateToDetail(matter)}
+            >
               <Text style={styles.textButton}>Estudar</Text>
               <Icon name="arrow-right" size={20} />
             </TouchableOpacity>
