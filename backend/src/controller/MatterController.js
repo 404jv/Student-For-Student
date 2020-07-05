@@ -16,10 +16,9 @@ module.exports = {
         countMatter
         .where({ topic_id });
 
-      matters.map(matter => 
-        matter.nextStudy = format(matter.nextStudy, 'dd/MM/yyyy')
+      matters.map(matter =>
+        matter.dateFormat = format(matter.nextStudy, 'dd/MM/yyyy')
       );
-
       const [count] = await countMatter;
       res.header('X-Total-Count', count['count']);
 
