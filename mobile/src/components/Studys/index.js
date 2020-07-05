@@ -19,6 +19,7 @@ import api from '../../services/api';
 
 export default function Studys() {
   const [studys, setStudys] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
@@ -28,12 +29,18 @@ export default function Studys() {
   });
   
   async function loadStudys() {
+    if (loading) 
+      return;
+    
+    setLoading(true);
+
     const res = await api.get('study/all', {
       headers: {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzNDgzNDE3fQ.nur6JngT0OnJl3GSo036qSyrWGSqri8HDhnm-XmX_ng'
       },
     });
 
+    setLoading(false);
     setStudys(res.data);
   };
 
