@@ -9,7 +9,8 @@ module.exports = {
       const nextStudy = format(new Date(), 'yyyy-MM-dd');
 
       const matters = await knex('matter')
-        .where({ nextStudy, topic_id });
+        .where('nextStudy', '<=', nextStudy)
+        .where({ topic_id });
 
       matters.map(matter =>
         matter.nextStudy = format(matter.nextStudy, 'dd/MM/yyyy')
@@ -48,7 +49,7 @@ module.exports = {
           nextDay = 60;
       }
 
-      const nextStudy = addDays(matter[0].nextStudy, nextDay);
+      const nextStudy = addDays(new Date, nextDay);
       const totRevisions = matter[0].totRevisions +1;
 
       await knex('matter')
