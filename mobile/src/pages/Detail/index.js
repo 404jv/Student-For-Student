@@ -2,20 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
+import { differenceInDays, parseISO, isAfter } from 'date-fns';
 
 import stylesMatters from '../Matters/style';
 import styles from './style';
 
 export default function Detail() {
-  const [matter, setMatter] = useState({});
   const [selectedMore, setSelectedMore] = useState(false);
+  const [isToday, setIsToday] = useState(false);
+  const [daysDiff, setDaysDiff] = useState(0);
 
   const route = useRoute();
   const navigation = useNavigation();
-
+  const matter = route.params;
 
   useEffect(() => {
-    setMatter(route.params);
+    setDaysDiff(differenceInDays(parseISO(matter.nextStudy), new Date));
+
+    setIsToday(!isAfter(parseISO(matter.nextStudy), new Date));
   }, []);
 
   return (
@@ -47,7 +51,14 @@ export default function Detail() {
         <Text style={[stylesMatters.span, styles.span]}>{matter.title}</Text>
         
         <Text style={[stylesMatters.strong, { marginLeft: 8}]}>Próxima revisão:</Text>
-        <Text style={[stylesMatters.span, styles.span]}>{matter.nextStudy}</Text>
+        <Text 
+          style={[stylesMatters.span, styles.span]
+        }>
+          {isToday 
+            ? <Text>Hoje</Text>
+            : <Text>{daysDiff} dias</Text>
+          } 
+        </Text>
 
         <View style={stylesMatters.reviewGroup}>
           <Text style={[stylesMatters.strong, { marginLeft: 8}]}>Total de revisões: </Text>
