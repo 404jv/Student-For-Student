@@ -32,7 +32,6 @@ export default StyleSheet.create({
   },
 
   matter: {
-    marginBottom: 25,
     backgroundColor: '#f9fafb',
     padding: 8,
     width: '100%',
@@ -47,5 +46,13 @@ export default StyleSheet.create({
 
 
   verse: {
+    alignItems: 'center',
+    backgroundColor: '#f9fafb',
+  },
+
+  resume: {
+    fontFamily: 'Roboto_400Regular',
+    fontSize: 25,
+    textAlign: 'justify',
   }
 });

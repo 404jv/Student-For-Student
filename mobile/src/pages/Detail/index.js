@@ -74,13 +74,12 @@ export default function Detail() {
               </>
           }
         </TouchableOpacity>
-
-        {selectedMore &&
-          <View style={styles.verse}>
-            <Text>{matter.resume}</Text>
-          </View>
-        }
       </View>
+      {selectedMore &&
+        <View style={styles.verse}>
+          <Text style={styles.resume}>{matter.resume}</Text>
+        </View>
+      }
     </View>
   );
 };
