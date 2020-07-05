@@ -22,14 +22,18 @@ export default function Detail() {
     setIsToday(!isAfter(parseISO(matter.nextStudy), new Date));
   }, []);
 
+  function handleNavigationBack() {
+    navigation.goBack();
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Icon 
           name="arrow-left"
           size={20}
-          style={{ right: 116}}
-          onPress={() => {}}
+          style={{ right: 110 }}
+          onPress={handleNavigationBack}
         />
         <Text 
           style={styles.matterTitle}
