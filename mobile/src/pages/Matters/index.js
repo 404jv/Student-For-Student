@@ -109,7 +109,7 @@ export default function Matter() {
             </View>
             
             <Text style={styles.strong}>Próxima revisão:</Text>
-            <Text style={styles.span}>{matter.nextStudy}</Text>
+            <Text style={styles.span}>{matter.dateFormat}</Text>
 
             <View style={styles.reviewGroup}>
               <Text style={styles.strong}>Total de revisões: </Text>
