@@ -103,7 +103,7 @@ export default StyleSheet.create({
   },
 
   textButton: {
-    fontSize: 15,
+    fontSize: 17,
     color: '#0a0e10'
   },
 
