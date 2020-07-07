@@ -7,23 +7,42 @@ import { differenceInDays, parseISO, isAfter } from 'date-fns';
 import stylesMatters from '../Matters/style';
 import styles from './style';
 
+import api from '../../services/api';
+
 export default function Detail() {
+  const [matter, setMatter] = useState({})
   const [selectedMore, setSelectedMore] = useState(false);
   const [isToday, setIsToday] = useState(false);
   const [daysDiff, setDaysDiff] = useState(0);
 
   const route = useRoute();
   const navigation = useNavigation();
-  const matter = route.params;
+  const matterParams = route.params;
+  
+  useEffect(() => {
+    setMatter(matterParams);
+  }, []);
 
   useEffect(() => {
     setDaysDiff(differenceInDays(parseISO(matter.nextStudy), new Date));
 
     setIsToday(!isAfter(parseISO(matter.nextStudy), new Date));
-  }, []);
+  }, [matter]);
 
   function handleNavigationBack() {
     navigation.goBack();
+  }
+
+  function handleCompleteStudy(id) {
+    api.get(`/study/${id}`, {
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
+      },
+    })
+      .then(res => {
+        setMatter(res.data);
+        console.log(res.data)
+      });
   }
 
   return (
@@ -37,7 +56,7 @@ export default function Detail() {
         />
         <Text 
           style={styles.matterTitle}
-        >{matter.title.substring(0, 7)}</Text>
+        >{matterParams.title.substring(0, 7)}</Text>
       </View>
       <View style={styles.lineBottom} />
 
@@ -60,7 +79,7 @@ export default function Detail() {
         }>
           {isToday 
             ? <Text>Hoje</Text>
-            : <Text>{daysDiff} dias</Text>
+            : daysDiff === 0 ? <Text>Amanhã</Text> : <Text>{daysDiff} dias</Text> 
           } 
         </Text>
 
@@ -92,7 +111,16 @@ export default function Detail() {
       </View>
       {selectedMore &&
         <View style={styles.verse}>
-          <Text style={styles.resume}>{matter.resume}</Text>
+          <Text style={[stylesMatters.span, styles.span]}>{matter.resume}</Text>
+          {isToday && 
+            <TouchableOpacity
+              style={styles.buttonRev}
+              activeOpacity={0.5}
+              onPress={() => handleCompleteStudy(matter.id)}
+            >
+              <Text style={{ color: '#f9fafb' }}>Revisado</Text>
+            </TouchableOpacity>
+          }
         </View>
       }
     </View>

@@ -54,5 +54,12 @@ export default StyleSheet.create({
     fontFamily: 'Roboto_400Regular',
     fontSize: 25,
     textAlign: 'justify',
-  }
+  },
+
+  buttonRev: {
+    padding: 8,
+    margin: 8,
+    borderRadius: 8,
+    backgroundColor: '#1d2a30',
+  },
 });
