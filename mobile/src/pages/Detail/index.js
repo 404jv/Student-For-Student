@@ -79,7 +79,7 @@ export default function Detail() {
         }>
           {isToday 
             ? <Text>Hoje</Text>
-            : daysDiff === 0 ? <Text>Amanhã</Text> : <Text>{daysDiff} dias</Text> 
+            : daysDiff !== 0 ? <Text>{daysDiff} dias</Text> : <Text>Amanhã</Text>
           } 
         </Text>
 
