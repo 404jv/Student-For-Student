@@ -29,7 +29,7 @@ module.exports = {
 
       const matter = await knex('matter')
         .where({ id })
-        .select('totRevisions', 'nextStudy');
+        .select('*');
 
       switch (matter[0].totRevisions) {
         case 0: 
@@ -56,7 +56,7 @@ module.exports = {
         .update({ nextStudy, totRevisions })
         .where({ id });
       
-      return res.send();
+      return res.json(matter[0]);
     } catch (error) {
         next(error);
     }
