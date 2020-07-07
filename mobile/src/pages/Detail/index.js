@@ -37,7 +37,7 @@ export default function Detail() {
         />
         <Text 
           style={styles.matterTitle}
-        >{matter.title}</Text>
+        >{matter.title.substring(0, 7)}</Text>
       </View>
       <View style={styles.lineBottom} />
 
