@@ -52,6 +52,10 @@ export default function Studys() {
     navigation.navigate('Matters', { topic_id, topic_name });
   }
 
+  function handleNavigateToDetail(matter) {
+    navigation.navigate('Detail',  matter);
+  }
+
   if (!fontsLoaded)
     return <AppLoading />;
 
@@ -94,6 +98,7 @@ export default function Studys() {
                       key={matter.id} 
                       style={styles.matter}
                       activeOpacity={0.6}
+                      onPress={() => handleNavigateToDetail(matter)}
                     >
                       <Text 
                         style={styles.matterTitle}
@@ -101,7 +106,7 @@ export default function Studys() {
                       </Text>
                       <Text 
                         style={styles.nextStudy}
-                      >{matter.nextStudy}
+                      >{matter.dateFormat}
                       </Text>
                     </TouchableOpacity>
                 ))
