@@ -99,7 +99,7 @@ module.exports = {
         const serializedTopics = topics.map(topic => {
         return {
           ...topic,
-          image_url: `http://192.168.1.5:3333/uploads/${topic.image_name}`
+          image_url: `http://192.168.1.7:3333/uploads/${topic.image_name}`
         }
       });
 
