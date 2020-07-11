@@ -27,26 +27,33 @@ export default StyleSheet.create({
 
   matter: {
     margin: 8,
+    padding: 5,
     borderWidth: 2,
     borderColor: '#525759',
-    borderRadius: 8,
-    height: 90,
-    width: 90,
+    borderRadius: 80,
+    height: 100,
+    width: 100,
     alignItems: 'center',
+  },
+
+  iconPlus: {
+    left: 35,
+    backgroundColor: '#00ACEE',
+    borderRadius: 40
   },
 
   matterTitle: {
     textAlign: 'center',
     fontSize: 25,
-    marginBottom: 8,
+    top: 8,
     fontFamily: 'Roboto_400Regular'
   },
 
   nextStudy: {
     textAlign: 'center',
     fontSize: 15,
+    top: 13,
     fontFamily: 'Roboto_400Regular',
-    marginTop: 10
   },
 
   button: {

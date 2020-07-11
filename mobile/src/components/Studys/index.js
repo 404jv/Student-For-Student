@@ -84,33 +84,38 @@ export default function Studys() {
               horizontal
               showsHorizontalScrollIndicator={false}
             >
-              {
-                study.matters.length === 0
-
-                ? <View style={[styles.matter, { justifyContent: 'center' }]}>
-                    <Icon 
-                      name="plus" 
-                      size={50}
-                    />
-                  </View> 
-                : study.matters.map(matter => (
-                  <TouchableOpacity 
-                      key={matter.id} 
-                      style={styles.matter}
-                      activeOpacity={0.6}
-                      onPress={() => handleNavigateToDetail(matter)}
-                    >
-                      <Text 
-                        style={styles.matterTitle}
-                      >{matter.title.substring(0, 5)}
-                      </Text>
-                      <Text 
-                        style={styles.nextStudy}
-                      >{matter.dateFormat}
-                      </Text>
-                    </TouchableOpacity>
-                ))
-              }
+            {study.matters.map(matter => (
+              <TouchableOpacity 
+                key={matter.id} 
+                style={styles.matter}
+                activeOpacity={0.6}
+                onPress={() => handleNavigateToDetail(matter)}
+              >
+                <Text 
+                  style={styles.matterTitle}
+                >{matter.title.substring(0, 5)}
+                </Text>
+                <Text 
+                  style={styles.nextStudy}
+                >{matter.dateFormat}
+                </Text>
+              </TouchableOpacity>
+            ))}
+            <TouchableOpacity 
+              style={[styles.matter, { justifyContent: 'flex-end'}]}
+              activeOpacity={0.6}
+            >
+              <Icon 
+                name="book"
+                size={40}
+              />
+              <Icon 
+                name="plus"
+                size={20}
+                color="#FFF"
+                style={styles.iconPlus}
+              />
+            </TouchableOpacity>
             </ScrollView>
             <TouchableOpacity 
               style={styles.button}
