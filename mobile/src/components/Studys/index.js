@@ -55,6 +55,10 @@ export default function Studys() {
   function handleNavigateToDetail(matter) {
     navigation.navigate('Detail',  matter);
   }
+  
+  function handleNavigateToCreateMatter(topic_id) {
+    navigation.navigate('CreateMatter', { topic_id })
+  }
 
   if (!fontsLoaded)
     return <AppLoading />;
@@ -104,6 +108,7 @@ export default function Studys() {
             <TouchableOpacity 
               style={[styles.matter, { justifyContent: 'flex-end'}]}
               activeOpacity={0.6}
+              onPress={() => handleNavigateToCreateMatter(study.id)}
             >
               <Icon 
                 name="book"
