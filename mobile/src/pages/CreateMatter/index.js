@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TextInput } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { useRoute } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
 
@@ -38,17 +38,27 @@ export default function InputMatter() {
       <TextInput
         placeholder="Título"
         underlineColorAndroid="transparent"
+        style={styles.input}
       />
       
       <TextInput
         placeholder="Resumo"
         underlineColorAndroid="transparent"
+        style={styles.input}
       />
 
       <TextInput
         placeholder="Tags"
         underlineColorAndroid="transparent"
+        style={styles.input}
       />
+
+      <TouchableOpacity
+        activeOpacity={0.9}
+        style={styles.button}
+      >
+        <Text style={styles.textButton}>Criar</Text>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -43,11 +43,33 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: '#73797d',
     fontSize: 14,
-    marginBottom: 8,
+    marginBottom: 64,
     marginRight: 7,
     marginLeft: 7,
   },
 
+  input: {
+    marginBottom: 18,
+    width: '80%',
+    color: '#73797d',
+    fontSize: 21,
+    height: 64
+  },
 
+  button: {
+    padding: 8,
+    margin: 8,
+    borderRadius: 8,
+    backgroundColor: '#1d2a30',
+    width: '80%',
+    height: 64,
+    justifyContent: 'center'
+  },
+
+  textButton: { 
+    color: '#f9fafb',
+    textAlign: 'center',
+    fontSize: 21
+  },
 
 });
