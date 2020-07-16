@@ -13,7 +13,7 @@ module.exports = {
         .where({ topic_id });
 
       matters.map(matter =>
-        matter.nextStudy = format(matter.nextStudy, 'dd/MM/yyyy')
+        matter.dateFormat = format(matter.nextStudy, 'dd/MM/yyyy')
       );
       
       return res.json(matters);
@@ -74,9 +74,9 @@ module.exports = {
       for (topic of topics) {
         const matters = await trx('matter')
           .where('topic_id', topic.id);
-
-        matters.map(matter =>
-          matter.nextStudy = format(matter.nextStudy, 'dd/MM/yyyy')
+        
+          matters.map(matter =>
+          matter.dateFormat = format(matter.nextStudy, 'dd/MM/yyyy')
         );
 
         const study = {
