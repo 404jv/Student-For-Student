@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { useRoute } from '@react-navigation/native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
 
 import styles from './style';
@@ -9,6 +9,7 @@ import styles from './style';
 
 export default function InputMatter() {
 
+  const navigation = useNavigation();
   const route = useRoute();
   const topic_id = route.params.topic_id;
   const pharases = [
@@ -19,9 +20,19 @@ export default function InputMatter() {
   ];
   const numberPharase = Math.floor(Math.random() * pharases.length);
 
+  function handleNavigationBack() {
+    navigation.goBack();
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <Icon 
+          name="arrow-left"
+          size={20}
+          style={{ right: '44%', top: 20 }}
+          onPress={handleNavigationBack}
+        />
         <View 
           style={styles.iconContainer}
           activeOpacity={0.6}
