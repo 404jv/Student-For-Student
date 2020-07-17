@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
 
+import api from '../../services/api';
+
 import styles from './style';
 
-
-
 export default function InputMatter() {
+  const [title, setTitle] = useState('');
+  const [resume, setResume] = useState('');
+  const [tags, setTags] = useState('');
+
 
   const navigation = useNavigation();
   const route = useRoute();
@@ -22,6 +26,18 @@ export default function InputMatter() {
 
   function handleNavigationBack() {
     navigation.goBack();
+  }
+
+  function handleSubmit() {
+    api.post(`/matters?topic_id=${topic_id}`, {
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
+      },
+
+      title: title,
+      resume: resume,
+      tags: tags,
+    }).catch(err => console.log(err));
   }
 
   return (
@@ -50,23 +66,27 @@ export default function InputMatter() {
         placeholder="Título"
         underlineColorAndroid="transparent"
         style={styles.input}
+        onChangeText={setTitle}
       />
       
       <TextInput
         placeholder="Resumo"
         underlineColorAndroid="transparent"
         style={styles.input}
+        onChangeText={setResume}
       />
 
       <TextInput
         placeholder="Tags"
         underlineColorAndroid="transparent"
         style={styles.input}
+        onChangeText={setTags}
       />
 
       <TouchableOpacity
         activeOpacity={0.9}
         style={styles.button}
+        onPress={handleSubmit}
       >
         <Text style={styles.textButton}>Criar</Text>
       </TouchableOpacity>
