@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight + 5,
-    backgroundColor: '#FFF'
+    backgroundColor: '#121212'
   },
 
   searchContainer: {
@@ -15,8 +15,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     borderWidth: 0.5,
     borderColor: '#000',
-    height: 40,
-    borderRadius: 8,
+    backgroundColor: '#FFFFFF',
+    height: 50,
+    borderRadius: 4,
     marginLeft: 8,
     marginRight: 8,
     marginTop: 8,
@@ -25,10 +26,13 @@ export default StyleSheet.create({
   searchIcon: {
     margin: 5,
     width: 25,
-    alignItems: 'center'
+    left: 90
   },
 
   input: {
-    flex: 1
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 15,
+    fontFamily: 'Roboto_700Bold',
   },
 });
