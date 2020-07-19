@@ -82,6 +82,7 @@ module.exports = {
         const study = {
           id: topic.id,
           topicName: topic.name,
+          image_url: `http://192.168.1.8:3333/uploads/${topic.image_name}`,
           matters: matters
         };
 
