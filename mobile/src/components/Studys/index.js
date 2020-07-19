@@ -74,7 +74,7 @@ export default function Studys() {
           left: '85%'
         }}
       >
-        <Icon name="refresh-ccw" size={30} />
+        <Icon name="refresh-ccw" color="#1DBA54" size={30} />
       </TouchableOpacity>
       <View>
         {studys.map(study => (
@@ -97,7 +97,7 @@ export default function Studys() {
               >
                 <Text 
                   style={styles.matterTitle}
-                >{matter.title.substring(0, 5)}
+                >{matter.title.substring(0, 9)}
                 </Text>
                 <Text 
                   style={styles.nextStudy}
@@ -106,19 +106,22 @@ export default function Studys() {
               </TouchableOpacity>
             ))}
             <TouchableOpacity 
-              style={[styles.matter, { justifyContent: 'flex-end'}]}
+              style={styles.matter}
               activeOpacity={0.6}
               onPress={() => handleNavigateToCreateMatter(study.id)}
             >
-              <Icon 
+              <Icon
+                style={styles.iconAdd}
                 name="book"
-                size={40}
+                color="#121212"
+                size={45}
+                color="#FFF"
               />
               <Icon 
-                name="plus"
-                size={20}
-                color="#FFF"
-                style={styles.iconPlus}
+                  name="plus"
+                  size={20}
+                  style={styles.iconPlus}
+                  color="#FFF"
               />
             </TouchableOpacity>
             </ScrollView>
@@ -131,7 +134,7 @@ export default function Studys() {
               <Icon 
                 name="arrow-right" 
                 size={18} 
-                color="#0A0B0D"
+                color="#FFFF"
                 style={{
                   marginRight: 8
                 }}

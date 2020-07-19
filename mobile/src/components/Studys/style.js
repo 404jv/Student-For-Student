@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 15,
-    backgroundColor: '#FFF'
+    backgroundColor: '#121212'
   },
 
   topic: {
@@ -15,6 +15,7 @@ export default StyleSheet.create({
   topicTitle: {
     fontWeight: 'bold',
     fontFamily: 'Roboto_700Bold',
+    color: "#FFFFFF",
     fontSize: 25,
     marginLeft: 20
   },
@@ -29,31 +30,43 @@ export default StyleSheet.create({
     margin: 8,
     padding: 5,
     borderWidth: 2,
-    borderColor: '#525759',
-    borderRadius: 80,
-    height: 100,
-    width: 100,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 4,
+    height: 140,
+    width: 135,
     alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  iconAdd: {
+    backgroundColor: '#1DBA54',
+    borderRadius: 100,
+    padding: 20,
+    top: 8,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   iconPlus: {
-    left: 35,
-    backgroundColor: '#00ACEE',
-    borderRadius: 40
+    zIndex: 10,
+    left: 25,
+    backgroundColor: '#121212',
+    borderRadius: 15,
+    bottom: 15
   },
 
   matterTitle: {
     textAlign: 'center',
     fontSize: 25,
-    top: 8,
-    fontFamily: 'Roboto_400Regular'
+    color: '#121212',
+    fontFamily: 'Roboto_700Bold',
   },
 
   nextStudy: {
     textAlign: 'center',
     fontSize: 15,
-    top: 13,
     fontFamily: 'Roboto_400Regular',
+    color: '#121212'
   },
 
   button: {
@@ -68,7 +81,8 @@ export default StyleSheet.create({
   textButton: {
     marginLeft: 10,
     fontSize: 16,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#FFFFFF'
   }
 
 });
