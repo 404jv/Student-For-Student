@@ -36,10 +36,12 @@ export default function Menu() {
       })}
       tabBarOptions={{
         style: {
-          borderTopColor: 'rgba(0, 0, 0, 0.2)',
+          borderTopColor: '#282828',
         },
-        inactiveTintColor: '#202020',
-        activeTintColor: '#808080', 
+        inactiveTintColor: 'rgba(29, 186, 84, 0.6)',
+        activeTintColor: '#1DBA54', 
+        activeBackgroundColor: '#282828',
+        inactiveBackgroundColor: '#282828'
       }}
       initialRouteName='Home'
     >
