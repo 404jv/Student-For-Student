@@ -3,7 +3,8 @@ import {
   Text, 
   View, 
   ScrollView, 
-  TouchableOpacity, 
+  TouchableOpacity,
+  Image, 
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
@@ -64,13 +65,14 @@ export default function Studys() {
     return <AppLoading />;
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <TouchableOpacity
         onPress={loadStudys}
         activeOpacity={0.6}
         style={{
           marginLeft: 10,
           marginBottom: 8,
+          marginTop: 16,
           left: '85%'
         }}
       >
@@ -79,7 +81,13 @@ export default function Studys() {
       <View>
         {studys.map(study => (
           <View key={study.id} style={study.topic}>
-            <Text style={styles.topicTitle}>{study.topicName}</Text>
+            <View style={styles.topicInfo}>
+              <Image
+                source={{ uri: study.image_url }}
+                style={styles.image}
+              />
+              <Text style={styles.topicTitle}>{study.topicName}</Text>
+            </View>
             <ScrollView
               style={styles.groupMatter}
               contentContainerStyle={{
@@ -144,6 +152,6 @@ export default function Studys() {
         ))
       }
       </View>
-    </View>
+    </ScrollView>
   );
 }

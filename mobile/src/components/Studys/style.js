@@ -8,8 +8,14 @@ export default StyleSheet.create({
     backgroundColor: '#121212'
   },
 
+  topicInfo: {
+    flexDirection: 'row',
+    marginLeft: 20,
+    alignItems: 'center'
+  },
+
   topic: {
-    marginBottom: 20
+    marginBottom: 20,
   },
 
   topicTitle: {
@@ -17,7 +23,13 @@ export default StyleSheet.create({
     fontFamily: 'Roboto_700Bold',
     color: "#FFFFFF",
     fontSize: 25,
-    marginLeft: 20
+    marginLeft: 8,
+  },
+
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
   },
 
   groupMatter: {
@@ -76,6 +88,7 @@ export default StyleSheet.create({
     marginRight: 8,
     borderBottomColor: '#525759',
     alignItems: 'center',
+    marginBottom: 8
   },
 
   textButton: {
