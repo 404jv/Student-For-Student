@@ -2,7 +2,8 @@ import React from 'react';
 import { 
   View, 
   TouchableOpacity, 
-  TextInput 
+  TextInput,
+  StatusBar
 } from 'react-native';
 import { AppLoading } from 'expo';
 import { 
@@ -33,6 +34,9 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
+      <StatusBar 
+        backgroundColor="#121212"
+      />
       <View style={styles.searchContainer}>
         <Icon 
           name="search"
