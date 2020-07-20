@@ -10,24 +10,31 @@ export default StyleSheet.create({
 
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 10,
-    backgroundColor: '#FFF'
+    paddingTop: Constants.statusBarHeight - 32,
+    backgroundColor: '#121212'
   },
 
   searchContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#282828',
+    height: 55,
   },
 
   searchIcon: {
     margin: 5,
+    marginLeft: 16,
     width: 25,
     alignItems: 'center'
   },
 
   input: {
-    flex: 1
+    flex: 1,
+    height: 55,
+    color: '#FFF',
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 15,
   },
 
   lineBottom: {
@@ -37,12 +44,12 @@ export default StyleSheet.create({
   },
 
   topic: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     marginTop: 20,
     width: 331,
     height: 150,
     borderRadius: 8,
-    backgroundColor: '#e9ecee',
+    backgroundColor: '#282828',
 
     shadowColor: "#000",
     shadowOffset: {
@@ -55,7 +62,7 @@ export default StyleSheet.create({
 
 
   topicImage: {
-    width: 331,
+    width: '100%',
     height: '76%',
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
@@ -63,16 +70,16 @@ export default StyleSheet.create({
   },
 
   topicInfo: {
-    width: '78%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginLeft: 15,
+    marginLeft: 12,
+    marginRight: 10
   },
 
   topicName: {
     fontSize: 24,
     fontFamily: 'Roboto_400Regular',
-    color: '#1d2a30'
+    color: '#FFF',
   },
 });

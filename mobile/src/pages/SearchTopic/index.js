@@ -55,18 +55,19 @@ export default function SearchTopic() {
             name="arrow-left"
             size={20}
             style={styles.searchIcon}
+            color="#FFF"
           />
         </TouchableOpacity>
         <TextInput 
           style={styles.input}
           placeholder="Procurar um tópico"
+          placeholderTextColor="#FFF"
           underlineColorAndroid="transparent"
           onChangeText={setFindTopic}
           onChange={handlefindTopic}
           value={findTopic}
           autoFocus
         />
-        
         <TouchableOpacity
           onPress={handleClearInput}
           activeOpacity={0.6}
@@ -75,7 +76,7 @@ export default function SearchTopic() {
             name="x"
             size={20}
             style={styles.searchIcon}
-            color="#808080"
+            color="#FFF"
           />
         </TouchableOpacity>
       </View>
@@ -90,25 +91,24 @@ export default function SearchTopic() {
           alignItems: 'center'
         }}
         renderItem={({ item: topic }) => (
-          <View style={styles.topic}>
-            <TouchableOpacity 
-              activeOpacity={0.6}
-              onPress={() => handleNavigateToMatters(topic.id, topic.name)}
-            >
-              <Image 
-                source={{ uri: topic.image_url}}
-                style={styles.topicImage}
+          <TouchableOpacity 
+            style={styles.topic}
+            activeOpacity={0.6}
+            onPress={() => handleNavigateToMatters(topic.id, topic.name)}
+          >
+            <Image 
+              source={{ uri: topic.image_url}}
+              style={styles.topicImage}
+            />
+            <View style={styles.topicInfo}>
+              <Text style={styles.topicName}>{topic.name.substring(0, 11)} </Text>
+              <Icon 
+                name="arrow-right"
+                size={20}
+                color="#1DBA54"
               />
-              <View style={styles.topicInfo}>
-              <Text style={styles.topicName}>{topic.name}</Text>
-                <Icon 
-                  name="arrow-right"
-                  size={20}
-                  style={styles.button}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
         )}
       />
     </View>
