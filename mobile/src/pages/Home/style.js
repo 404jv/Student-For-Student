@@ -21,6 +21,7 @@ export default StyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
     marginTop: 8,
+    marginBottom: -15
   },
 
   searchIcon: {
