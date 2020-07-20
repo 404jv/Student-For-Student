@@ -79,7 +79,6 @@ export default function SearchTopic() {
           />
         </TouchableOpacity>
       </View>
-      <View style={styles.lineBottom} />
 
       <FlatList 
         data={findTopics}
