@@ -49,8 +49,8 @@ export default function Studys() {
     loadStudys();
   }, []);
 
-  function handleNavigateToMatters(topic_id, topic_name) {
-    navigation.navigate('Matters', { topic_id, topic_name });
+  function handleNavigateToMatters(topic_id, topic_name, image_url) {
+    navigation.navigate('Matters', { topic_id, topic_name, image_url });
   }
 
   function handleNavigateToDetail(matter) {
@@ -136,7 +136,7 @@ export default function Studys() {
             <TouchableOpacity 
               style={styles.button}
               activeOpacity={0.6}
-              onPress={() => handleNavigateToMatters(study.id, study.topicName)}
+              onPress={() => handleNavigateToMatters(study.id, study.topicName, study.image_url)}
             >
               <Text style={styles.textButton}>Ver tudo</Text>
               <Icon 
