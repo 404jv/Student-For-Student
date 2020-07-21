@@ -3,8 +3,8 @@ import {
   Text, 
   View, 
   ScrollView, 
-  SafeAreaView,
   TouchableOpacity,
+  Image
 } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
@@ -22,6 +22,7 @@ export default function Matter() {
   const topic = {
     id: route.params.topic_id,
     name: route.params.topic_name,
+    image_url: route.params.image_url,
   };
 
   useEffect(() => {
@@ -59,19 +60,24 @@ export default function Matter() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
+      <Icon 
+        name="arrow-left"
+        size={20}
+        onPress={handleNavigationBack}
+        color="#C8C8C8"
+        style={{ marginLeft: 8}}
+      />
 
       <View style={styles.header}>
-        <Icon 
-          name="arrow-left"
-          size={20}
-          onPress={handleNavigationBack}
+        <Image 
+          source={{ uri: topic.image_url }}
+          style={styles.image}
         />
         <Text 
           style={styles.topicName}
         >{topic.name}</Text>
       </View>
-      <View style={styles.lineBottom} />
 
       <ScrollView 
         showsVerticalScrollIndicator={false}
@@ -86,7 +92,7 @@ export default function Matter() {
             style={styles.matter}
           >
             <View style={styles.matterHeader}>
-              <Text style={styles.title}>{matter.title.substring(0, 7)}</Text>
+              <Text style={styles.title}>{matter.title.substring(0, 10)}</Text>
               
               <View style={styles.groupIcons}>
 
@@ -95,14 +101,14 @@ export default function Matter() {
                   style={{ marginTop: 8}}
                   onPress={() => handleDeleteMatter(matter.id)}
                 >
-                  <Icon name="trash-2" color="#1d2a30" size={25} />
+                  <Icon name="trash-2" color="#C8C8C8" size={25} />
                 </TouchableOpacity>
 
                 <TouchableOpacity
                   activeOpacity={0.6}
                   style={{ marginTop: 8}}
                 >
-                  <Icon name="edit" color="#1d2a30" size={25} />
+                  <Icon name="edit" color="#C8C8C8" size={25} />
                 </TouchableOpacity>
                 
               </View>
@@ -123,11 +129,11 @@ export default function Matter() {
               onPress={() => handleNavigateToDetail(matter)}
             >
               <Text style={styles.textButton}>Estudar</Text>
-              <Icon name="arrow-right" size={20} />
+              <Icon name="arrow-right" size={20} color="#C8C8C8" />
             </TouchableOpacity>
           </View>
         ))}
       </ScrollView>
-    </SafeAreaView>
+    </ScrollView>
   );
 };

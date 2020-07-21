@@ -5,38 +5,38 @@ export default StyleSheet.create({
 
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight - 18,
-    backgroundColor: '#FFF',
+    paddingTop: Constants.statusBarHeight - 25,
+    backgroundColor: '#121212',
   },
 
   header: {
     flexDirection: 'row',
     marginBottom: 22,
     alignItems: 'center',
-    marginLeft: 8,
+    marginLeft: 10,
     marginRight: 8,
-    marginBottom: 8
+    marginBottom: 8,
+    marginTop: 16
   },
   
-  lineBottom: {
-    borderBottomWidth: 0.5,
-    borderColor: '#000',
-    width: '100%',
+  image: {
+    height: 115,
+    width: 115,
+    borderRadius: 8,
   },
 
   topicName: {
     fontWeight: 'bold',
     fontFamily: 'Roboto_700Bold',
-    fontSize: 25,
-    marginLeft: 90,
+    marginLeft: 8,
+    fontSize: 28,
+    color: '#FFF'
   },
 
   matter: {
     marginBottom: 25,
-    borderWidth: 0.5,
     borderRadius: 8,
-    borderColor: '#5454',
-    backgroundColor: '#f9fafb',
+    backgroundColor: '#282828',
     padding: 8,
     width: '94%',
     height: 250,
@@ -56,18 +56,18 @@ export default StyleSheet.create({
     fontFamily: 'Roboto_700Bold',
     fontSize: 30,
     textAlign: 'center',
-    color: '#1d2a30',
+    color: '#FFF',
     marginLeft: 8
   },
 
   strong: {
     fontFamily: 'Roboto_400Regular',
     fontSize: 20,
-    color: '#3d4042',
+    color: '#C8C8C8',
   },
 
   span: {
-    color: '#73797d',
+    color: '#1DBA54',
     fontSize: 16,
     marginLeft: 25,
     marginTop: 4,
@@ -75,7 +75,7 @@ export default StyleSheet.create({
   },
 
   spanReview: {
-    color: '#73797d',
+    color: '#1DBA54',
     fontSize: 20,
   },
 
@@ -89,7 +89,7 @@ export default StyleSheet.create({
   tags: {
     fontFamily: 'Roboto_400Regular',
     fontSize: 12,
-    color: '#73797d',
+    color: '#C8C8C8',
     textAlign: 'center',
     bottom: 15,
   },
@@ -104,7 +104,7 @@ export default StyleSheet.create({
 
   textButton: {
     fontSize: 17,
-    color: '#0a0e10'
+    color: '#C8C8C8'
   },
 
 });
