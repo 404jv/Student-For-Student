@@ -24,14 +24,13 @@ export default StyleSheet.create({
 
   searchIcon: {
     margin: 5,
-    width: 25,
-    left: 90
+    marginRight: 10
   },
 
-  input: {
-    flex: 1,
+  textInput: {
     textAlign: 'center',
     fontSize: 15,
     fontFamily: 'Roboto_700Bold',
+    color: '#282828'
   },
 });

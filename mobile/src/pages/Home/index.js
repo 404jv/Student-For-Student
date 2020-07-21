@@ -3,6 +3,7 @@ import {
   View, 
   TouchableOpacity, 
   TextInput,
+  Text,
   StatusBar
 } from 'react-native';
 import { AppLoading } from 'expo';
@@ -37,22 +38,24 @@ export default function Home() {
       <StatusBar 
         backgroundColor="#121212"
       />
-      <View style={styles.searchContainer}>
+      <View 
+        style={styles.searchContainer} 
+        onTouchStart={handleNavigateToSearchTopic}
+      >
         <Icon 
           name="search"
           size={20}
           color="#C8C8C8"
           style={styles.searchIcon}
         />
-        <TextInput 
-          style={styles.input}
-          placeholder="Procurar um tópico"
-          placeholderTextColor="#282828"
+        <View 
+          placeholder=""
           underlineColorAndroid="transparent"
-          onTouchStart={handleNavigateToSearchTopic}
-        />
+          onPress={handleNavigateToSearchTopic}
+        >
+          <Text style={styles.textInput}>Procurar um tópico</Text>
+        </View>
       </View>
-
       <Studys />
     </View>
   );
