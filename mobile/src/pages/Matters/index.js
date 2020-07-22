@@ -63,7 +63,7 @@ export default function Matter() {
     <ScrollView style={styles.container}>
       <Icon 
         name="arrow-left"
-        size={20}
+        size={24}
         onPress={handleNavigationBack}
         color="#C8C8C8"
         style={{ marginLeft: 8}}
