@@ -47,18 +47,13 @@ export default function Detail() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Icon 
-          name="arrow-left"
-          size={20}
-          style={{ right: 110 }}
-          onPress={handleNavigationBack}
-        />
-        <Text 
-          style={styles.matterTitle}
-        >{matterParams.title.substring(0, 7)}</Text>
-      </View>
-      <View style={styles.lineBottom} />
+      <Icon 
+        name="arrow-left"
+        size={24}
+        color="#C8C8C8"
+        onPress={handleNavigationBack}
+        style={{ marginLeft: 8, top: -15 }}
+      />
 
       <View 
         style={styles.matter}
@@ -99,12 +94,12 @@ export default function Detail() {
             ?
               <>
                 <Text style={stylesMatters.textButton}>Esconder a resposta</Text>
-                <Icon name="arrow-up" size={20} />
+                <Icon name="arrow-up" color="#C8C8C8" size={20} />
               </>
             :
               <>
                 <Text style={stylesMatters.textButton}>Ver a resposta</Text>
-                <Icon name="arrow-down" size={20} />
+                <Icon name="arrow-down" color="#C8C8C8" size={20} />
               </>
           }
         </TouchableOpacity>
@@ -118,7 +113,7 @@ export default function Detail() {
               activeOpacity={0.5}
               onPress={() => handleCompleteStudy(matter.id)}
             >
-              <Text style={{ color: '#f9fafb' }}>Revisado</Text>
+              <Text style={styles.textButton}>Revisado</Text>
             </TouchableOpacity>
           }
         </View>

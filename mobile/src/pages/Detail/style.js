@@ -4,8 +4,8 @@ import Constants from 'expo-constants';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 10,
-    backgroundColor: '#FFF',
+    paddingTop: Constants.statusBarHeight + 8,
+    backgroundColor: '#121212',
   },
 
   header: {
@@ -32,10 +32,11 @@ export default StyleSheet.create({
   },
 
   matter: {
-    backgroundColor: '#f9fafb',
+    backgroundColor: '#282828',
     padding: 8,
     width: '100%',
     height: 250,
+    marginTop: 8
   },
 
   span: { 
@@ -47,7 +48,7 @@ export default StyleSheet.create({
 
   verse: {
     alignItems: 'center',
-    backgroundColor: '#f9fafb',
+    backgroundColor: '#282828',
   },
 
   resume: {
@@ -57,9 +58,17 @@ export default StyleSheet.create({
   },
 
   buttonRev: {
-    padding: 8,
+    width: 95,
+    height: 35,
     margin: 8,
-    borderRadius: 8,
-    backgroundColor: '#1d2a30',
+    borderRadius: 15,
+    backgroundColor: '#1DBA54',
+    justifyContent: 'center'
+  },
+
+  textButton: { 
+    color: '#FFF', 
+    textAlign: 'center',
+    fontSize: 18
   },
 });
