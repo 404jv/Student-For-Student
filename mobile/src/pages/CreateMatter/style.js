@@ -4,15 +4,14 @@ import Constants from 'expo-constants';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight + 10,
-    backgroundColor: '#FFF',
+    backgroundColor: '#121212',
     alignItems: 'center'
   },
 
   iconContainer: {
     padding: 5,
     borderWidth: 2,
-    borderColor: '#525759',
+    backgroundColor: '#1DBA54',
     borderRadius: 80,
     height: 100,
     width: 100,
@@ -35,13 +34,14 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Roboto_700Bold',
     fontSize: 25,
+    color: '#FFF',
     marginBottom: 8,
     marginTop: 18
   },
 
   headerText: {
     textAlign: 'center',
-    color: '#73797d',
+    color: '#C8C8C8',
     fontSize: 14,
     marginBottom: 64,
     marginRight: 7,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
   input: {
     marginBottom: 18,
     width: '80%',
-    color: '#73797d',
+    color: '#C8C8C8',
     fontSize: 21,
     height: 64
   },

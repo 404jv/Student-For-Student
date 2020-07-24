@@ -45,7 +45,8 @@ export default function InputMatter() {
       <View style={styles.header}>
         <Icon 
           name="arrow-left"
-          size={20}
+          size={24}
+          color="#C8C8C8"
           style={{ right: '44%', top: 20 }}
           onPress={handleNavigationBack}
         />
@@ -56,6 +57,7 @@ export default function InputMatter() {
         >
           <Icon 
             name="book"
+            color="#FFF"
             size={40}
           />
         </View>
@@ -64,6 +66,7 @@ export default function InputMatter() {
       </View>
       <TextInput
         placeholder="Título"
+        placeholderTextColor="#C8C8C8"
         underlineColorAndroid="transparent"
         style={styles.input}
         onChangeText={setTitle}
@@ -71,6 +74,7 @@ export default function InputMatter() {
       
       <TextInput
         placeholder="Resumo"
+        placeholderTextColor="#C8C8C8"
         underlineColorAndroid="transparent"
         style={styles.input}
         onChangeText={setResume}
@@ -78,6 +82,7 @@ export default function InputMatter() {
 
       <TextInput
         placeholder="Tags"
+        placeholderTextColor="#C8C8C8"
         underlineColorAndroid="transparent"
         style={styles.input}
         onChangeText={setTags}
