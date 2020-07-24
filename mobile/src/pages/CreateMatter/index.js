@@ -4,6 +4,7 @@ import {
   View, 
   TextInput, 
   TouchableOpacity,
+  KeyboardAvoidingView
 } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
@@ -45,7 +46,7 @@ export default function InputMatter() {
   }
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.header}>
         <Icon 
           name="arrow-left"
@@ -104,6 +105,6 @@ export default function InputMatter() {
           <Text style={styles.textButton}>Criar</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
