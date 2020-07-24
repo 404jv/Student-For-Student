@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Text, 
   View, 
   TextInput, 
   TouchableOpacity,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Keyboard,
 } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
@@ -17,6 +18,7 @@ export default function InputMatter() {
   const [title, setTitle] = useState('');
   const [resume, setResume] = useState('');
   const [tags, setTags] = useState('');
+  const [selectedKeyBoard, setSelectedKeyBoard] = useState(false);
 
   const navigation = useNavigation();
   const route = useRoute();
@@ -28,6 +30,19 @@ export default function InputMatter() {
     '"Na ciência temos de nos interessar pelas coisas e não pelas pessoas." - Marie Curie',
   ];
   const numberPharase = Math.floor(Math.random() * pharases.length);
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardDidShow', keyboardDidShow);
+    Keyboard.addListener('keyboardDidHide', keyboardDidHide);
+  }, []);
+
+  function keyboardDidHide() {
+    setSelectedKeyBoard(false);
+  }
+  
+  function keyboardDidShow() {
+    setSelectedKeyBoard(true);
+  }
 
   function handleNavigationBack() {
     navigation.goBack();
@@ -48,24 +63,25 @@ export default function InputMatter() {
   return (
     <KeyboardAvoidingView style={styles.container}>
       <View style={styles.header}>
-        <Icon 
-          name="arrow-left"
-          size={24}
-          color="#C8C8C8"
-          style={{ right: '44%', top: 20 }}
-          onPress={handleNavigationBack}
-        />
-        <View 
-          style={styles.iconContainer}
-          activeOpacity={0.6}
-          onPress={() => handleNavigateToCreateMatter(study.id)}
-        >
           <Icon 
-            name="book"
-            color="#FFF"
-            size={40}
+            name="arrow-left"
+            size={24}
+            color="#C8C8C8"
+            style={{ right: '44%', top: 20 }}
+            onPress={handleNavigationBack}
           />
-        </View>
+        {!selectedKeyBoard &&
+          <View 
+            style={styles.iconContainer}
+            activeOpacity={0.6}
+          >
+              <Icon 
+                name="book"
+                color="#FFF"
+                size={40}
+              />
+          </View>
+        }
         <Text style={styles.headerTitle}>Continue aprendendo!</Text>
         <Text style={styles.headerText}>{pharases[numberPharase]}</Text>
       </View>

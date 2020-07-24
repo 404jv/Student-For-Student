@@ -50,6 +50,7 @@ export default StyleSheet.create({
     flex: 1,
     width: '90%',
     alignItems: 'center',
+    marginBottom: 55
   },
 
   input: {
