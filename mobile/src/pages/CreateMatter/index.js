@@ -20,7 +20,6 @@ export default function InputMatter() {
   const [resume, setResume] = useState('');
   const [tags, setTags] = useState('');
   const [selectedKeyBoard, setSelectedKeyBoard] = useState(false);
-  const [topic_id] = useState('')
 
   const navigation = useNavigation();
   const route = useRoute();
