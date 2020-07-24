@@ -54,8 +54,10 @@ export default StyleSheet.create({
 
   input: {
     marginBottom: 18,
-    width: '80%',
-    color: '#C8C8C8',
+    width: '90%',
+    color: '#121212',
+    borderRadius: 8,
+    backgroundColor: '#FFF',
     fontSize: 21,
     height: 64,
     textAlign: 'center'
@@ -65,14 +67,14 @@ export default StyleSheet.create({
     padding: 8,
     margin: 8,
     borderRadius: 8,
-    backgroundColor: '#1d2a30',
-    width: '80%',
+    backgroundColor: '#1DBA54',
+    width: '90%',
     height: 64,
     justifyContent: 'center'
   },
 
   textButton: { 
-    color: '#f9fafb',
+    color: '#FFF',
     textAlign: 'center',
     fontSize: 21,
     alignItems: 'center'
