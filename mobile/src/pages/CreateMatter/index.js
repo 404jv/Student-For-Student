@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { 
+  Text, 
+  View, 
+  TextInput, 
+  TouchableOpacity,
+} from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native'
 import { Feather as Icon } from '@expo/vector-icons';
 
@@ -11,7 +16,6 @@ export default function InputMatter() {
   const [title, setTitle] = useState('');
   const [resume, setResume] = useState('');
   const [tags, setTags] = useState('');
-
 
   const navigation = useNavigation();
   const route = useRoute();
@@ -64,37 +68,42 @@ export default function InputMatter() {
         <Text style={styles.headerTitle}>Continue aprendendo!</Text>
         <Text style={styles.headerText}>{pharases[numberPharase]}</Text>
       </View>
-      <TextInput
-        placeholder="Título"
-        placeholderTextColor="#C8C8C8"
-        underlineColorAndroid="transparent"
-        style={styles.input}
-        onChangeText={setTitle}
-      />
-      
-      <TextInput
-        placeholder="Resumo"
-        placeholderTextColor="#C8C8C8"
-        underlineColorAndroid="transparent"
-        style={styles.input}
-        onChangeText={setResume}
-      />
 
-      <TextInput
-        placeholder="Tags"
-        placeholderTextColor="#C8C8C8"
-        underlineColorAndroid="transparent"
-        style={styles.input}
-        onChangeText={setTags}
-      />
-
-      <TouchableOpacity
-        activeOpacity={0.9}
-        style={styles.button}
-        onPress={handleSubmit}
+      <View 
+        style={styles.groupInputs}
       >
-        <Text style={styles.textButton}>Criar</Text>
-      </TouchableOpacity>
+        <TextInput
+          placeholder="Título"
+          placeholderTextColor="#C8C8C8"
+          underlineColorAndroid="transparent"
+          style={styles.input}
+          onChangeText={setTitle}
+        />
+        
+        <TextInput
+          placeholder="Resumo"
+          placeholderTextColor="#C8C8C8"
+          underlineColorAndroid="transparent"
+          style={styles.input}
+          onChangeText={setResume}
+        />
+
+        <TextInput
+          placeholder="Tags"
+          placeholderTextColor="#C8C8C8"
+          underlineColorAndroid="transparent"
+          style={styles.input}
+          onChangeText={setTags}
+        />
+
+        <TouchableOpacity
+          activeOpacity={0.9}
+          style={styles.button}
+          onPress={handleSubmit}
+        >
+          <Text style={styles.textButton}>Criar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

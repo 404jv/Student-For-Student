@@ -26,6 +26,7 @@ export default StyleSheet.create({
   },
   
   header: {
+    flex: 1,
     alignItems: 'center',
     marginBottom: 15
   },
@@ -43,9 +44,12 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: '#C8C8C8',
     fontSize: 14,
-    marginBottom: 64,
-    marginRight: 7,
-    marginLeft: 7,
+  },
+
+  groupInputs: {
+    flex: 1,
+    width: '90%',
+    alignItems: 'center',
   },
 
   input: {
@@ -53,7 +57,8 @@ export default StyleSheet.create({
     width: '80%',
     color: '#C8C8C8',
     fontSize: 21,
-    height: 64
+    height: 64,
+    textAlign: 'center'
   },
 
   button: {
@@ -69,7 +74,8 @@ export default StyleSheet.create({
   textButton: { 
     color: '#f9fafb',
     textAlign: 'center',
-    fontSize: 21
+    fontSize: 21,
+    alignItems: 'center'
   },
 
 });
