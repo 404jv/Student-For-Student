@@ -40,12 +40,6 @@ export default StyleSheet.create({
     marginTop: 18
   },
 
-  headerText: {
-    textAlign: 'center',
-    color: '#C8C8C8',
-    fontSize: 14,
-  },
-
   groupInputs: {
     flex: 1,
     width: '90%',
