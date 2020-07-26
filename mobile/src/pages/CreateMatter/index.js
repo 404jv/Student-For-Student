@@ -44,14 +44,12 @@ export default function InputMatter() {
 
   function handleSubmit() {
     api.post(`/matters?topic_id=${topic_id}`, {
-      headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
-      },
-
       title: title,
       resume: resume,
       tags: tags,
-    }).catch(err => console.log(err));
+    });
+
+    navigation.goBack();
   }
 
   return (
