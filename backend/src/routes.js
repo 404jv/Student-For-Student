@@ -79,7 +79,7 @@ routes
       page: Joi.number(),
     },
   }), MatterController.index)
-  .post('/matters', authMiddleware, celebrate({
+  .post('/matters', celebrate({
     [Segments.BODY]: Joi.object().keys({
       title: Joi.string().required(),
       resume: Joi.string().required(),
