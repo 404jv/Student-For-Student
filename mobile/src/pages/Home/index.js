@@ -1,8 +1,6 @@
 import React from 'react';
 import { 
-  View, 
-  TouchableOpacity, 
-  TextInput,
+  View,
   Text,
   StatusBar
 } from 'react-native';
