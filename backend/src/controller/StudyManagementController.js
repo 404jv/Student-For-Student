@@ -27,7 +27,7 @@ module.exports = {
       const { id } = req.params;
       let nextDay = 0;
 
-      const matter = await knex('matter')
+      let matter = await knex('matter')
         .where({ id })
         .select('*');
 
@@ -51,11 +51,15 @@ module.exports = {
 
       const nextStudy = addDays(new Date, nextDay);
       const totRevisions = matter[0].totRevisions +1;
-
+      
       await knex('matter')
         .update({ nextStudy, totRevisions })
-        .where({ id });
-      
+        .where({ id })
+  
+      matter = await knex('matter')
+        .where({ id })
+        .select('*');
+
       return res.json(matter[0]);
     } catch (error) {
         next(error);
