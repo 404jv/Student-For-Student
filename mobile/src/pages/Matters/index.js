@@ -43,7 +43,7 @@ export default function Matter() {
   }
 
   function handleNavigateToDetail(matter) {
-    navigation.navigate('Detail', matter);    
+    navigation.navigate('Detail', { matter, topic_id: topic.id });    
   }
 
   async function handleDeleteMatter(id) {
