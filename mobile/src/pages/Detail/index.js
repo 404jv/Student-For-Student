@@ -18,7 +18,7 @@ export default function Detail() {
   const route = useRoute();
   const navigation = useNavigation();
   const matterParams = route.params;
-  
+
   useEffect(() => {
     setMatter(matterParams);
   }, []);
@@ -39,21 +39,59 @@ export default function Detail() {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
       },
     })
-      .then(res => {
-        setMatter(res.data);
-        console.log(res.data)
-      });
+  }
+
+  async function handleDeleteMatter(id) {
+    await api.delete(`/matters/${id}`, {
+      headers: {
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljYTBlNWNhIiwibmFtZSI6InRlc3QxMzIiLCJlbWFpbCI6InRlc3QzMjFAIiwiaWF0IjoxNTkzMTQwNzg1fQ.gl1AJJC5UrqzErwjRW2Y0ObrpjqI3oCB1gs7Joxrm60'
+      },
+      params: {
+        topic_id: matter.topic_id
+      }
+    });
+
+    navigation.goBack();
   }
 
   return (
     <View style={styles.container}>
-      <Icon 
-        name="arrow-left"
-        size={24}
-        color="#C8C8C8"
-        onPress={handleNavigationBack}
-        style={{ marginLeft: 8, top: -15 }}
-      />
+
+      <View style={styles.header}>
+        <TouchableOpacity
+          onPress={handleNavigationBack}
+          activeOpacity={0.6}
+        >
+          <Icon 
+            name="arrow-left"
+            size={25}
+            color="#C8C8C8"
+          />
+        </TouchableOpacity>
+          <View style={{ flexDirection: 'column' }}>
+            <TouchableOpacity
+              onPress={() => handleDeleteMatter(matter.id)}
+              activeOpacity={0.6}
+            >
+              <Icon 
+                name="trash-2"
+                size={25}
+                color="#C8C8C8"
+                style={{ marginBottom: 8 }}
+              />
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+              activeOpacity={0.6}
+            >
+              <Icon 
+                name="edit"
+                size={25}
+                color="#C8C8C8"
+              />
+            </TouchableOpacity>
+          </View>
+      </View>
 
       <View 
         style={styles.matter}
