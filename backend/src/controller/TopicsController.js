@@ -52,6 +52,8 @@ module.exports = {
         }
       });
 
+      await trx.commit();
+
       return res.json(serializedTopics);
     } catch (error) {
         next(error);

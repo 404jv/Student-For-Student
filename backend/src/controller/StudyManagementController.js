@@ -93,6 +93,7 @@ module.exports = {
         studysArry.push(study);
       }
       
+      await trx.commit();
 
       return res.json(studysArry);
     } catch (error) {
