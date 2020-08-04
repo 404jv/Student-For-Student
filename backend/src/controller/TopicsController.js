@@ -1,16 +1,19 @@
 const crypto = require('crypto');
 const knex = require('../database');
 const { format } = require('date-fns-tz');
+const  { isAfter, parseISO } = require('date-fns');
 
 module.exports = {
   async index(req, res, next) {
     try {
       const { page = 1 } = req.query;
       const user_id = req.user_id;
+      const topicsWithTotToday = [];
+      const trx = await knex.transaction();
 
-      const countTopics = knex('topics').count();
+      const countTopics = trx('topics').count();
 
-      const topics = await knex('topics')
+      const topics = await trx('topics')
         .limit(5)
         .offset((page -1) * 5)
         .where({ user_id })
@@ -23,8 +26,26 @@ module.exports = {
 
       const [count] = await countTopics;
       res.header('X-Total-Count', count['count']);
+      
+      for (topic of topics) {
+        // to identify how many matters the study has for today 
+        const matters = await trx('matter')
+          .where({ topic_id: topic.id });
 
-      const serializedTopics = topics.map(topic => {
+        let totIsToday = 0;
+        matters.map(matter => {
+          if (!isAfter(parseISO(matter.nextStudy), new Date)) {
+            totIsToday++;
+          }
+        });
+
+        topicsWithTotToday.push({
+          ...topic,
+          totIsToday
+        });
+      };
+
+      const serializedTopics = await topicsWithTotToday.map(topic => {
         return {
           ...topic,
           image_url: `http://192.168.1.8:3333/uploads/${topic.image_name}`
