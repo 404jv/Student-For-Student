@@ -107,14 +107,14 @@ routes
       id: Joi.string().required(),
     }),
   }), MatterController.update)
-  .post('/matters/find', authMiddleware, celebrate({
+  .get('/matters/:id', authMiddleware, celebrate({
     [Segments.QUERY]: {
       topic_id: Joi.string().required(),
     },
-    [Segments.BODY]: Joi.object().keys({
-      title: Joi.string().required(),
+    [Segments.PARAMS]: Joi.object().keys({
+      id: Joi.string().required(),
     }),
-  }), MatterController.show)
+  }), MatterController.showId)
 
   // STUDYMANEGER
   .get('/study/all', authMiddleware, StudyManagementController.studyAll)
