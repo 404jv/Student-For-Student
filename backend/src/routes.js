@@ -114,7 +114,7 @@ routes
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.string().required(),
     }),
-  }), MatterController.showId)
+  }), MatterController.show)
 
   // STUDYMANEGER
   .get('/study/all', authMiddleware, StudyManagementController.studyAll)
