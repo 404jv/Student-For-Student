@@ -85,15 +85,14 @@ module.exports = {
   async show(req, res, next) {
     try {
       const { topic_id } = req.query;
-      const { title } = req.body;
+      const { id } = req.params;
 
-      const matters = await knex('matter')
-        .where('title', 'like', `%${title}%`)
-        .where({ topic_id });
+      const matter = await knex('matter')
+        .where({ topic_id, id });
       
-      return res.json(matters);
+      return res.json(matter);
     } catch (error) {
         next(error)
     }
-  } 
+  },
 }
